@@ -1,0 +1,756 @@
+:root {
+    --bs-blue: #0d6efd;
+    --bs-indigo: #6610f2;
+    --bs-purple: #6f42c1;
+    --bs-pink: #d63384;
+    --bs-red: #dc3545;
+    --bs-orange: #fd7e14;
+    --bs-yellow: #ffc107;
+    --bs-green: #198754;
+    --bs-teal: #20c997;
+    --bs-cyan: #0dcaf0;
+    --bs-white: #fff;
+    --bs-gray: #6c757d;
+    --bs-gray-dark: #343a40;
+    --bs-gray-100: #f8f9fa;
+    --bs-gray-200: #e9ecef;
+    --bs-gray-300: #dee2e6;
+    --bs-gray-400: #ced4da;
+    --bs-gray-500: #adb5bd;
+    --bs-gray-600: #6c757d;
+    --bs-gray-700: #495057;
+    --bs-gray-800: #343a40;
+    --bs-gray-900: #212529;
+    --bs-primary: #4682B4;
+    --bs-secondary: #D190BB;
+    --bs-success: #198754;
+    --bs-info: #0dcaf0;
+    --bs-warning: #ffc107;
+    --bs-danger: #dc3545;
+    --bs-light: #f8f9fa;
+    --bs-dark: #957DAE;
+    --bs-primary-rgb: 13, 110, 253;
+    --bs-secondary-rgb: 108, 117, 125;
+    --bs-success-rgb: 25, 135, 84;
+    --bs-info-rgb: 13, 202, 240;
+    --bs-warning-rgb: 255, 193, 7;
+    --bs-danger-rgb: 220, 53, 69;
+    --bs-light-rgb: 248, 249, 250;
+    --bs-dark-rgb: 33, 37, 41;
+    --bs-white-rgb: 255, 255, 255;
+    --bs-black-rgb: 0, 0, 0;
+    --bs-body-color-rgb: 33, 37, 41;
+    --bs-body-bg-rgb: 255, 255, 255;
+    --bs-font-sans-serif: "Inter", sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",        "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+    --bs-body-font-family: var(--bs-font-sans-serif);
+    --bs-body-font-size: 1rem;
+    --bs-body-font-weight: 400;
+    --bs-body-line-height: 1.5;
+    --bs-body-color: #494849;
+    --bs-body-bg: #fff;
+
+    /* Font variables */
+    --primary-font: "Inter", sans-serif;
+    --secondary-font: "Inter", sans-serif;
+    --heading-font-weight: 700;
+    --body-font-weight: 400;
+}
+
+/* Optimized font loading */
+body {
+    font-family: var(--primary-font);
+     /* Ensures text remains visible during font loading */
+    font-size: 14px;
+}
+img,
+video,
+iframe {
+    max-width: 100%;
+    height: auto;
+}
+.dropdown-item{font-family: "Philosopher", sans-serif;color: #494849 !important;font-weight: 600;padding: 9px 25px;font-size: 17px;letter-spacing: 1.5px;}
+.navbar-nav .dropdown-menu{min-width: 200px;}
+.contact_head{list-style: none;padding: 0;}
+.contact_head_item{
+}
+.contact_head_item a{font-family: "Philosopher", sans-serif;color: #494849 !important;font-size: 16px;} 
+.contact_head_item a i{
+} 
+header{padding-top: 10px;padding-bottom: 0;}
+header hr{border-top: 1px solid #efefef;opacity: 1;}
+.search{
+}
+.search form{/* border-bottom: 1px solid #efefef; */position: relative;}
+.search form input{width: 300px;padding: 8px 10px;border: none;background-color: #4682b41a;outline: none;box-shadow: none;}
+.search form button{border: none;background-color: transparent;position: absolute;right: 6px;top: 7px;}
+.mainSwiper .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #f3f3f3;
+    position: relative;
+    height: 750px;
+    max-height: 100vh;
+}
+.mainSwiper .swiper-slide .swiper-slide-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 0;
+    transition:
+        transform 7000ms ease,
+        opacity 1500ms ease-in,
+        -webkit-transform 7000ms ease;
+}
+.mainSwiper .content {
+    position: absolute;
+    z-index: 100;
+    padding: 17px;
+    width: 100%;
+}
+.mainSwiper .content h2,
+.mainSwiper .content div,
+.mainSwiper .content a {
+    transform: translateY(20px);
+    transition: all 0.6s ease-in-out;
+    transition-delay: 0.8s;
+    opacity: 0;
+}
+.mainSwiper .content h2.fade-down {
+    color: #fff;
+    text-transform: uppercase;
+    width: 800px;
+    max-width: 95%;
+    font-size: 53px;
+    line-height: 68px;
+    margin: 0 auto;
+    margin-bottom: 25px;
+    transform: translateY(-30px);
+    opacity: 0;
+    transition:
+        transform 0.8s ease,
+        opacity 0.8s ease;
+    font-family: "Philosopher", sans-serif;
+    letter-spacing: 2px;
+}
+
+.mainSwiper .content div.fade-up,
+.mainSwiper .content div.fade-down {
+    line-height: 28px;
+    margin-bottom: 30px;
+    transition: all 0.6s ease-in-out;
+    transition-delay: 0.8s;
+}
+.mainSwiper .content a.fade-up {
+    transition-delay: 0.6s;
+}
+.mainSwiper .swiper-slide-active .fade-up {
+    opacity: 1;
+    transform: translateY(0);
+}
+.mainSwiper .swiper-slide-active .swiper-slide-bg {
+    transform: scale(1.15);
+}
+.mainSwiper .content .des {
+    color: #fff;
+    max-width: 100%;
+    width: 800px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    max-width: 90% !important;
+}
+.mainSwiper .content .des p {
+    font-size: 18px;
+    line-height: 38px;
+}
+.mainSwiper .swiper-slide:before {
+    content: "";
+}
+.mainSwiper .content h2,
+.mainSwiper .content .des {
+    animation-fill-mode: both;
+    animation-name: bdFadeInDown;
+}
+.mainSwiper .swiper-slide-active .content h2,
+.mainSwiper .swiper-slide-active .content .des,
+.mainSwiper .swiper-slide-active .content a {
+    animation-duration: 1.8s;
+    opacity: 1;
+}
+.mainSwiper .content h2.fade-down.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+.main-menu {padding: 0;}
+.logo {
+    padding: 0;
+    /* width: 20%; */
+    text-align: center;
+}
+.logo img {
+    height: 70px;
+}
+.navbar-light .navbar-nav .nav-link {
+    font-family: "Philosopher", sans-serif;
+    color: #494849 !important;
+    font-weight: 600;
+    padding: 15px 25px;
+    font-size: 17px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+.navbar-right {
+}
+.navbar-light .navbar-right .nav-link {
+    font-weight: 500;
+    font-size: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.navbar-light .navbar-right .nav-link i {color: var(--bs-primary) !important;}
+.section.bg-img-2 {
+    background-image: url('../images/bg-img-2.jpg');
+    padding-top: 70px;
+    padding-bottom: 70px;
+    background-size: cover;
+    background-position: center;
+}
+.block-title{text-align: center;margin-bottom: 30px;}
+.sub-title{font-weight: 500;font-size: 16px;}
+.block-title h2{font-family: "Philosopher", sans-serif;color: var(--bs-primary);font-weight: 600;font-size: 32px;letter-spacing: 1.5px;text-transform: uppercase;}
+.btn-main{background-color: var(--bs-primary);position: relative;z-index: 100;border-radius: 5px;padding: 12px 40px;color: #fff;);font-family: "Philosopher", sans-serif;font-size: 16px;text-transform: uppercase;}
+.btn-main:hover{
+}
+.item-product-cat{
+}
+.item-product-cat-content{position: relative;}
+.item-product-cat-content a:before{content:"";position: absolute;left: 0;right: 0;width: 100%;height: 100%;background-color: #000;opacity: 0.4;transition: all .15s ease-in-out;}
+.item-product-cat .item-image{
+}
+.item-product-cat .item-image img{width: 100%;height: 400px;object-fit: cover;}
+.product-cat-content-info{position: absolute;z-index: 100;bottom: 30px;text-align: center;left: 0;right: 0;z-index: 10;}
+.item-product-cat .item-title{font-size: 20px;text-align: center;font-family: "Philosopher", sans-serif;font-weight: 600;}
+.item-product-cat .item-title a{text-decoration: none;color: #f3f3f3;text-transform: uppercase;}
+.item-product-cat:hover .item-product-cat-content{animation-name: animation-horizontal;animation-duration: 1s;animation-timing-function: ease-in-out;animation-iteration-count: 1;}
+.item-product-cat:hover .item-product-cat-content a:before{opacity: 0.1;}
+.product-cat-content-info .link{}
+.section-home{padding-top: 70px;padding-bottom: 70px;}
+.cate_product{
+}
+.cate_product_content{position: relative;background-color: #f7f7f7;-webkit-transition: all 0.5s ease-in-out;-moz-transition: all 0.5s ease-in-out;-o-transition: all 0.5s ease-in-out;transition: all 0.5s ease-in-out;border-radius: 10px;overflow: hidden;}
+.cate_product_content img{width: 100%;height: 100%;object-fit: cover;-webkit-transition: all 0.5s ease-in-out;-moz-transition: all 0.5s ease-in-out;-o-transition: all 0.5s ease-in-out;transition: all 0.5s ease-in-out;}
+.cate_product_content a{
+}
+.cate_product .item-title{position: absolute;bottom: 10px;text-align: center;left: 0;right: 0;font-size: 18px;font-family: "Philosopher", sans-serif;}
+.cate_product .item-title a{text-decoration: none;color: #494849;}
+.cate_product_content:hover{background-color: #4682b442;}
+.cate_product_content:hover img{transform: scale3d(1.1, 1.1, 1);}
+.cate_product_content:hover a{color: #000;}
+.product-item{
+}
+.product-img{
+}
+.product-img a{position: relative;display: block;overflow: hidden;border-radius: 10px;background-color: #fff;}
+.product-img a img{-webkit-transition: all 0.5s ease-in-out;-moz-transition: all 0.5s ease-in-out;-o-transition: all 0.5s ease-in-out;transition: all 0.5s ease-in-out;}
+.product-img a img.img-hover{position: absolute;top: 0;left: 0;width: 100%;height: 100%;opacity: 0;object-fit: cover;}
+.product-content{text-align: center;padding-top: 13px;}
+.product-cate{color: var(--bs-primary);font-weight: 500;text-decoration: none;}
+.product-content .text{font-family: "Philosopher", sans-serif;font-size: 15px;margin-top: 7px;}
+.product-content .text a{text-decoration: none;text-align: center;color: #494849;font-weight: 600;}
+.product-price{font-weight: 700;font-size: 17px;color: var(--bs-primary);}
+.product-price .price{font-family: "Philosopher", sans-serif;}
+.product-item:hover{
+}
+.product-item:hover .product-img a img.img-show{opacity: 0;}
+.product-item:hover .product-img a img.img-hover{opacity: 1;}
+
+
+.tintuc{padding-top: 50px;padding-bottom: 50px;}
+.tintuc_title{margin-bottom: 30px;}
+.tintuc_title .sub{color: var(--bs-primary);font-weight: 500;position: relative;}
+.tintuc_title .sub:after{content:"";width: 70px;position: absolute;left: 110%;height: 1px;background-color: var(--bs-primary);top: 14px;}
+.tintuc_title .text{
+    font-family: "Philosopher", sans-serif;
+    letter-spacing: 2px;
+    font-size: 38px;
+    margin-top: 5px;
+}
+.tintuc_item{border-radius: 10px;overflow: hidden;}
+.tintuc_img{
+}
+.tintuc_img img{width: 100%;height: 300px;object-fit: cover;}
+.tintuc_content{padding: 20px 0;}
+.tintuc_content .text{font-family: "Philosopher", sans-serif;letter-spacing: 1.8px;font-size: 16px;margin-bottom: 20px;margin-top: 12px;}
+.tintuc_content .text a{color: #000;text-decoration: none;font-family: "Philosopher", sans-serif;font-weight: 600;letter-spacing: 1.2px;}
+.tintuc_content .text a:hover{
+}
+.tintuc_des{font-size: 14px;color: #555555;margin-bottom: 20px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+.tintuc_item .btn-main{font-size: 14px;padding: 7px 19px;}
+.tintuc_item .btn-main:hover{
+}
+.tintuc_content span{text-transform: uppercase;font-size: 12px;}
+.gioithieu:before{content:"";position: absolute;top: 0;left: 0;width: 100%;height: 100%;background-color: var(--bs-primary);opacity: 0.2;}
+footer{padding-top: 50px;padding-bottom: 20px;background: #f6f6f6;}
+.title_f{text-transform: uppercase;font-family: "Philosopher", sans-serif;font-size: 19px;font-weight: 700;margin-bottom: 15px;color: #000;letter-spacing: 1.5px;margin-top: 20px;}
+.footer-content{line-height: 28px;}
+.footer-content ul{list-style: none;padding: 0;}
+.footer-content ul li{
+}
+.footer-content ul li a{text-decoration: none;color: #0a0a0a;}
+.mxh-f{
+}
+.mxh-f a{display: inline-block;width: 35px;height: 35px;background-color: var(--bs-primary);text-align: center;line-height: 35px;color: #fff;border-radius: 50%;margin-right: 5px;}
+.big_img_sp a {
+    display: block;
+    text-align: center;
+}
+
+.big_img_sp a img {
+    display: inline-block;
+    max-width: 100%;
+    object-fit: contain;
+    height: 500px;
+}
+.contact_form{
+}
+.contact_form input{border: 1px solid var(--bs-primary);height: 43px;border-radius: 5px;padding: 5px 22px;font-size: 14px;}
+.contact_form select{border: 1px solid var(--bs-primary);height: 43px;padding: 5px 22px;border-radius: 5px;font-size: 14px;}
+.contact_bg{position: absolute;left: 0;top: 0;width: 45%;height: 100%;object-fit: cover;}
+.contact_form textarea{height: 120px;border: 1px solid var(--bs-primary);padding: 5px 22px;border-radius: 5px;}
+.nav_img_pro img {
+    height: 112px;
+    display: block;
+    margin: 0px auto;
+    width: 100%;
+    object-fit: cover;
+    padding: 5px;
+    border-radius: 10px;
+}
+.bando_contact{position: absolute;width: 49%;height: 100%;}
+.bando_contact iframe{width: 100%;height: 100%;}
+.item_album_product {
+    display: block;
+    min-height: 350px;
+    background-color: #f5f5f5;
+    /* line-height: 300px; */
+    text-align: center;
+}
+
+.item_album_product img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+.chitiet_sanpham ul {
+}
+.chitiet_sanpham ul li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 19px;
+}
+.chitiet_sanpham ul li:before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    display: inline-block;
+    background-color: #000;
+    border-radius: 50%;
+    position: absolute;
+    top: 9px;
+    left: 0;
+}
+.scroll-to-fixed-fixed {
+}
+.scroll-to-fixed-remove {
+    position: initial !important;
+}
+.swiper-button-next:after, .swiper-button-prev:after{font-size: 23px !important;!i;!;background-color: var(--bs-primary);color: #fff;padding: 10px 10px;}
+.detail-info {
+}
+
+.title-detail {
+    line-height: 32px;
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 15px;
+    font-family: "Philosopher", sans-serif;
+    letter-spacing: 1.5px;
+}
+
+.product-detail-rating {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 15px 0;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between
+}
+
+.product-rate {
+    background-image: url(../images/rating-stars.png);
+    background-position: 0 -12px;
+    background-repeat: repeat-x;
+    height: 12px;
+    width: 60px;
+    transition: all .5s ease-out 0;
+    -webkit-transition: all .5s ease-out 0
+}
+
+.product-rating {
+    height: 12px;
+    background-repeat: repeat-x;
+    background-image: url(../images/rating-stars.png);
+    background-position: 0 0
+}
+
+.text-muted {
+    color: #8e8e90!important
+}
+
+.detail-info .product-price-cover {
+    border-top: 1px solid #e2e9e1;
+    border-bottom: 1px solid #e2e9e1;
+    padding: 19px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center
+}
+
+.detail-info .product-price-cover .product-price {
+    font-family: "Philosopher", sans-serif;
+    letter-spacing: 1.5px;
+    font-size: 20px;
+}
+
+.detail-info .product-price ins {
+    font-size: 30px;
+    text-decoration: none;
+    font-weight: 600
+}
+.title_home_product {font-family: "Philosopher", sans-serif;color: var(--bs-primary);font-weight: 600;font-size: 32px;letter-spacing: 1.5px;text-transform: uppercase;padding-top: 38px;margin-bottom: 30px;}
+.text-brand {
+}
+.chitiet_sanpham{line-height: 24px;}
+.detail-info .product-price ins {
+    font-size: 30px;
+    text-decoration: none;
+    font-weight: 600
+}
+.pro-details-brand a{color: var(--bs-primary);text-decoration: none;}
+.detail-info .product-price ins span.old-price {
+    text-decoration: line-through;
+    color: #888;
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 400
+}
+#button {
+  display: inline-block;
+  background-color: var(--bs-primary);
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border-radius: 4px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  transition: background-color .3s, 
+    opacity .5s, visibility .5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+  text-decoration: none;
+}
+#button::after {
+  content: "\f077";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.5em;
+  line-height: 44px;
+  color: #fff;
+}
+#button:hover {
+  cursor: pointer;
+  background-color: #333;
+}
+#button:active {
+  background-color: #555;
+}
+#button.show {
+  opacity: 1;
+  visibility: visible;
+}
+.page-item.active .page-link{background-color: var(--bs-secondary);border: 1px solid var(--bs-secondary);}
+.page-link{color: #706d6d;}
+.head_page{background-size: cover;padding-top: 50px;padding-bottom: 50px;position: relative;background-position: center;background-image: url(../images/bg-img-2.jpg);}
+.head_page:before{content:"";position: absolute;top: 0;left: 0;width: 100%;height: 100%;background-color: var(--bs-primary);opacity: 0.3;}
+.head_page_content{position: relative;z-index: 1;}
+.title_page{font-family: "Philosopher", sans-serif;letter-spacing: 1.5px;font-weight: 600;}
+.breadcrumb{
+}
+.breadcrumb a, .breadcrumb span{color: #494849;text-decoration: none;}
+.breadcrumb-item.active{color: #fff;}
+.breadcrumb-item+.breadcrumb-item::before{color: #494849;}
+.news-detail{);/* box-shadow: 1px 1px 10px 1px #cccccc96; */border-radius: 10px;padding: 15px;}
+.blog-detail-img{width: 100%;height: auto;}
+.news-detail .head{
+}
+.news-detail .head .tag{color: var(--bs-dark);text-decoration: none;}
+.news-detail .head .tag i{
+}
+.news-detail .head .chiase{
+}
+.news-detail .head .chiase a{color: var(--bs-dark);text-decoration: none;display: inline-block;margin-left: 10px;}
+.news-detail .title{font-family: "Philosopher", sans-serif;color: #494849 !important;margin-bottom: 30px;font-size: 28px;font-weight: 500;border-bottom: 1px solid var(--bs-primary);padding-bottom: 10px;}
+.blog-details{font-size: 14px;line-height: 24px;}
+.blog-details img{
+}
+.blog-details h2, .blog-details h3{font-family: "Philosopher", sans-serif;color: #2d2d2d !important;margin-bottom: 10px;margin-top: 30px;font-weight: 700;font-size: 22px;}
+.gioithieu{position: relative;}
+.gioithieu .block-title{text-align: left;}
+.gioithieu .block-content{line-height: 23px;font-size: 15px;}
+.gioithieu .block-title h2{font-size: 28px;text-transform: capitalize;}
+.gioithieu .img-fluid{border-radius: 20px;}
+@media (min-width: 500px) {
+  .content {
+    width: 43%;
+  }
+  #button {
+    margin: 30px;
+  }
+}
+.iframe-f{margin-bottom: 10px;}
+.iframe-f iframe{height: 250px;}
+.thongtinkhoahoc{background-color: #6f415e;padding: 15px;border-radius: 15px;color: #fff;margin-bottom: 30px;}
+.thongtinkhoahoc table{
+}
+.thongtinkhoahoc table{margin-bottom: 0;}
+.thongtinkhoahoc table tr td{color: #fff;font-family: "Philosopher", sans-serif;font-size: 17px;padding-top: 10px;padding-bottom: 10px;}
+@media (max-width: 575.98px) {
+    .navbar-nav .dropdown-menu{
+        border: none;
+    }
+    .navbar-toggler{
+        background-color: var(--bs-primary);
+        border: none;
+        padding: 5px 10px;
+        color: var(--bs-dark) !important;
+    }
+    .main-menu{
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .sub-title{
+        font-size: 14px;
+    }
+    .block-title h2{
+    font-size: 20px;
+    margin-top: 8px;
+    }
+    .navbar-light .navbar-nav .nav-link{
+        font-size: 14px;
+        padding-left: 13px;
+        padding-right: 13px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .dropdown-item{
+    font-size: 14px;
+    }
+    .mainSwiper .content h2.fade-down{
+        font-size: 30px;
+        line-height: 38px;
+    }
+    .mainSwiper .swiper-slide{
+        height: 200px;
+    }
+    .khoahoc_content{
+        padding: 20px 10px;
+    }
+    .khoahoc_content .text{
+        font-size: 18px;
+    }
+    .gioithieu_video{
+        width: 125px;
+        height: 125px;
+    }
+    .tintuc_content .text{
+        font-size: 16px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+    .tintuc_content{
+        padding: 10px;
+    }
+    .container, .container-md, .container-sm{
+        max-width: 100%;
+    }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .navbar-light .navbar-nav .nav-link{
+        font-size: 14px;
+        padding-left: 13px;
+        padding-right: 13px;
+    }
+    .mainSwiper .content h2.fade-down{
+        font-size: 42px;
+    }
+    .mainSwiper .swiper-slide{
+        height: 400px;
+    }
+    .khoahoc_content{
+        padding: 20px 10px;
+    }
+    .khoahoc_content .text{
+        font-size: 18px;
+    }
+    .gioithieu_video{
+        width: 125px;
+        height: 125px;
+    }
+    .tintuc_content .text{
+        font-size: 16px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+    .tintuc_content{
+        padding: 10px;
+    }
+    .container, .container-md, .container-sm{
+        max-width: 100%;
+    }
+}
+@media (min-width: 992px) and (max-width: 1024px) {
+    .navbar-light .navbar-nav .nav-link{
+        font-size: 14px;
+        padding-left: 13px;
+        padding-right: 13px;
+    }
+    .mainSwiper .content h2.fade-down{
+        font-size: 48px;
+    }
+    .mainSwiper .swiper-slide{
+        height: 500px;
+    }
+    .khoahoc_content{
+        padding: 20px 10px;
+    }
+    .khoahoc_content .text{
+        font-size: 18px;
+    }
+    .gioithieu_video{
+        width: 150px;
+        height: 150px;
+    }
+    .tintuc_content .text{
+        font-size: 16px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+    .tintuc_content{
+        padding: 10px;
+    }
+}
+@media (min-width: 1025px) and (max-width: 1199.98px) {
+    .container, .container-lg, .container-md, .container-sm{
+        max-width: 100%;
+    }
+    .navbar-light .navbar-nav .nav-link{
+        
+    }
+}
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+    .gioithieu_video{
+    }
+    .navbar-light .navbar-nav .nav-link {
+        padding: 15px 18px;
+        font-size: 16px;
+    }
+     .container-fluid{
+        padding:0;
+    }
+}
+@media (min-width: 1400px) {
+}
+@keyframes bdFadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-100px);
+        -ms-transform: translateY(-100px);
+        transform: translateY(-100px);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+@keyframes pulse-animation {
+    0% {
+        transform: scale(1);
+        opacity: .6;
+    }
+    40% {
+        transform: scale(1.3);
+        opacity: .6;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+@keyframes animation-horizontal {
+    16.65% {
+        transform: translateX(8px)
+    }
+
+    33.3% {
+        transform: translateX(-6px)
+    }
+
+    49.95% {
+        transform: translateX(4px)
+    }
+
+    66.6% {
+        transform: translateX(-2px)
+    }
+
+    83.25% {
+        transform: translateX(1px)
+    }
+
+    100% {
+        transform: translateX(0)
+    }
+}

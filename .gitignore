@@ -1,0 +1,17 @@
+# Logs and cache
+/logs/
+/cache/
+/node_modules/
+/vendor/
+
+# Sensitive files
+.env
+#config.php
+
+# IDE files
+*.idea/
+*.vscode/
+
+# System files
+.DS_Store
+Thumbs.db

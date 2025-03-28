@@ -1,0 +1,36 @@
+.grid-preview {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.preview-container {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.preview-row {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 5px;
+}
+
+.preview-col {
+    box-sizing: border-box;
+    padding: 0 5px;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.preview-col-inner {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+}

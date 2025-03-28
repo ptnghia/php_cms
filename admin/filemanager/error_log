@@ -1,0 +1,145 @@
+[15-Jul-2024 10:41:24 Europe/Rome] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 32768 bytes) in /home/yhopaoqihosting/public_html/eifec/admin/filemanager/UploadHandler.php on line 597
+[18-Jul-2024 11:44:48 Europe/Rome] PHP Warning:  imagecreatefrompng(): gd-png: libpng warning: iCCP: known incorrect sRGB profile in /home/yhopaoqihosting/public_html/eifec/admin/filemanager/UploadHandler.php on line 597
+[18-Jul-2024 11:44:48 Europe/Rome] PHP Warning:  imagecreatefrompng(): gd-png: libpng warning: iCCP: cHRM chunk does not match sRGB in /home/yhopaoqihosting/public_html/eifec/admin/filemanager/UploadHandler.php on line 597
+[09-Mar-2025 18:31:47 UTC] PHP Fatal error:  Uncaught ValueError: mb_http_input(): Argument #1 ($type) must be one of "G", "P", "C", "S", "I", or "L" in /home/yhopaoqihosting/public_html/cms/admin/filemanager/config/config.php:11
+Stack trace:
+#0 /home/yhopaoqihosting/public_html/cms/admin/filemanager/config/config.php(11): mb_http_input('UTF-8')
+#1 /home/yhopaoqihosting/public_html/cms/admin/filemanager/dialog.php(4): include('/home/yhopaoqih...')
+#2 {main}
+  thrown in /home/yhopaoqihosting/public_html/cms/admin/filemanager/config/config.php on line 11
+[09-Mar-2025 18:32:02 UTC] PHP Fatal error:  Uncaught ValueError: mb_http_input(): Argument #1 ($type) must be one of "G", "P", "C", "S", "I", or "L" in /home/yhopaoqihosting/public_html/cms/admin/filemanager/config/config.php:11
+Stack trace:
+#0 /home/yhopaoqihosting/public_html/cms/admin/filemanager/config/config.php(11): mb_http_input('UTF-8')
+#1 /home/yhopaoqihosting/public_html/cms/admin/filemanager/dialog.php(4): include('/home/yhopaoqih...')
+#2 {main}
+  thrown in /home/yhopaoqihosting/public_html/cms/admin/filemanager/config/config.php on line 11
+[09-Mar-2025 19:09:53 UTC] PHP Fatal error:  Uncaught ValueError: mb_http_input(): Argument #1 ($type) must be one of "G", "P", "C", "S", "I", or "L" in /home/yhopaoqihosting/public_html/cms/admin/filemanager/config/config.php:11
+Stack trace:
+#0 /home/yhopaoqihosting/public_html/cms/admin/filemanager/config/config.php(11): mb_http_input('UTF-8')
+#1 /home/yhopaoqihosting/public_html/cms/admin/filemanager/dialog.php(4): include('/home/yhopaoqih...')
+#2 {main}
+  thrown in /home/yhopaoqihosting/public_html/cms/admin/filemanager/config/config.php on line 11
+[09-Mar-2025 19:09:54 UTC] PHP Fatal error:  Uncaught ValueError: mb_http_input(): Argument #1 ($type) must be one of "G", "P", "C", "S", "I", or "L" in /home/yhopaoqihosting/public_html/cms/admin/filemanager/config/config.php:11
+Stack trace:
+#0 /home/yhopaoqihosting/public_html/cms/admin/filemanager/config/config.php(11): mb_http_input('UTF-8')
+#1 /home/yhopaoqihosting/public_html/cms/admin/filemanager/dialog.php(4): include('/home/yhopaoqih...')
+#2 {main}
+  thrown in /home/yhopaoqihosting/public_html/cms/admin/filemanager/config/config.php on line 11
+[09-Mar-2025 19:28:48 UTC] PHP Fatal error:  Uncaught ValueError: mb_http_input(): Argument #1 ($type) must be one of "G", "P", "C", "S", "I", or "L" in /home/yhopaoqihosting/public_html/cms/admin/filemanager/config/config.php:11
+Stack trace:
+#0 /home/yhopaoqihosting/public_html/cms/admin/filemanager/config/config.php(11): mb_http_input('UTF-8')
+#1 /home/yhopaoqihosting/public_html/cms/admin/filemanager/dialog.php(4): include('/home/yhopaoqih...')
+#2 {main}
+  thrown in /home/yhopaoqihosting/public_html/cms/admin/filemanager/config/config.php on line 11
+[09-Mar-2025 19:30:51 UTC] PHP Fatal error:  Uncaught ValueError: mb_http_input(): Argument #1 ($type) must be one of "G", "P", "C", "S", "I", or "L" in /home/yhopaoqihosting/public_html/cms/admin/filemanager/config/config.php:11
+Stack trace:
+#0 /home/yhopaoqihosting/public_html/cms/admin/filemanager/config/config.php(11): mb_http_input('UTF-8')
+#1 /home/yhopaoqihosting/public_html/cms/admin/filemanager/dialog.php(4): include('/home/yhopaoqih...')
+#2 {main}
+  thrown in /home/yhopaoqihosting/public_html/cms/admin/filemanager/config/config.php on line 11
+[09-Mar-2025 19:30:58 UTC] PHP Fatal error:  Uncaught ValueError: mb_http_input(): Argument #1 ($type) must be one of "G", "P", "C", "S", "I", or "L" in /home/yhopaoqihosting/public_html/cms/admin/filemanager/config/config.php:11
+Stack trace:
+#0 /home/yhopaoqihosting/public_html/cms/admin/filemanager/config/config.php(11): mb_http_input('UTF-8')
+#1 /home/yhopaoqihosting/public_html/cms/admin/filemanager/dialog.php(4): include('/home/yhopaoqih...')
+#2 {main}
+  thrown in /home/yhopaoqihosting/public_html/cms/admin/filemanager/config/config.php on line 11
+[09-Mar-2025 20:46:28 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/cms/admin/filemanager/UploadHandler.php on line 48
+[09-Mar-2025 20:53:07 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/cms/admin/filemanager/UploadHandler.php on line 48
+[09-Mar-2025 20:54:19 Europe/Rome] PHP Warning:  scandir(/img_data/images/): Failed to open directory: No such file or directory in /home/yhopaoqihosting/public_html/cms/admin/filemanager/dialog.php on line 610
+[09-Mar-2025 20:54:19 Europe/Rome] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/yhopaoqihosting/public_html/cms/admin/filemanager/dialog.php on line 610
+[09-Mar-2025 20:54:19 Europe/Rome] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, false given in /home/yhopaoqihosting/public_html/cms/admin/filemanager/dialog.php:613
+Stack trace:
+#0 {main}
+  thrown in /home/yhopaoqihosting/public_html/cms/admin/filemanager/dialog.php on line 613
+[09-Mar-2025 20:54:56 Europe/Rome] PHP Fatal error:  Uncaught Error: Undefined constant "base_url" in /home/yhopaoqihosting/public_html/cms/admin/filemanager/config/config.php:96
+Stack trace:
+#0 /home/yhopaoqihosting/public_html/cms/admin/filemanager/dialog.php(4): include()
+#1 {main}
+  thrown in /home/yhopaoqihosting/public_html/cms/admin/filemanager/config/config.php on line 96
+[09-Mar-2025 20:55:18 Europe/Rome] PHP Warning:  scandir(): https:// wrapper is disabled in the server configuration by allow_url_fopen=0 in /home/yhopaoqihosting/public_html/cms/admin/filemanager/dialog.php on line 610
+[09-Mar-2025 20:55:18 Europe/Rome] PHP Warning:  scandir(https://cms.lifetech-website.vn/img_data/images/): Failed to open directory: no suitable wrapper could be found in /home/yhopaoqihosting/public_html/cms/admin/filemanager/dialog.php on line 610
+[09-Mar-2025 20:55:18 Europe/Rome] PHP Warning:  scandir(): (errno 0): Success in /home/yhopaoqihosting/public_html/cms/admin/filemanager/dialog.php on line 610
+[09-Mar-2025 20:55:18 Europe/Rome] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, false given in /home/yhopaoqihosting/public_html/cms/admin/filemanager/dialog.php:613
+Stack trace:
+#0 {main}
+  thrown in /home/yhopaoqihosting/public_html/cms/admin/filemanager/dialog.php on line 613
+[09-Mar-2025 20:55:22 Europe/Rome] PHP Warning:  scandir(): https:// wrapper is disabled in the server configuration by allow_url_fopen=0 in /home/yhopaoqihosting/public_html/cms/admin/filemanager/dialog.php on line 610
+[09-Mar-2025 20:55:22 Europe/Rome] PHP Warning:  scandir(https://cms.lifetech-website.vn/img_data/images/): Failed to open directory: no suitable wrapper could be found in /home/yhopaoqihosting/public_html/cms/admin/filemanager/dialog.php on line 610
+[09-Mar-2025 20:55:22 Europe/Rome] PHP Warning:  scandir(): (errno 0): Success in /home/yhopaoqihosting/public_html/cms/admin/filemanager/dialog.php on line 610
+[09-Mar-2025 20:55:22 Europe/Rome] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, false given in /home/yhopaoqihosting/public_html/cms/admin/filemanager/dialog.php:613
+Stack trace:
+#0 {main}
+  thrown in /home/yhopaoqihosting/public_html/cms/admin/filemanager/dialog.php on line 613
+[09-Mar-2025 20:56:19 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/cms/admin/filemanager/UploadHandler.php on line 48
+[09-Mar-2025 20:56:20 Europe/Rome] PHP Deprecated:  Implicit conversion from float 19.5 to int loses precision in /home/yhopaoqihosting/public_html/cms/admin/filemanager/include/php_image_magician.php on line 493
+[12-Mar-2025 11:33:37 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/cms/admin/filemanager/UploadHandler.php on line 48
+[12-Mar-2025 11:33:37 Europe/Rome] PHP Deprecated:  Implicit conversion from float 15.5 to int loses precision in /home/yhopaoqihosting/public_html/cms/admin/filemanager/include/php_image_magician.php on line 493
+[12-Mar-2025 11:33:40 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/cms/admin/filemanager/UploadHandler.php on line 48
+[12-Mar-2025 12:58:38 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/cms/admin/filemanager/UploadHandler.php on line 48
+[12-Mar-2025 12:58:55 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/cms/admin/filemanager/UploadHandler.php on line 48
+[12-Mar-2025 12:58:55 Europe/Rome] PHP Deprecated:  Implicit conversion from float 7.5 to int loses precision in /home/yhopaoqihosting/public_html/cms/admin/filemanager/include/php_image_magician.php on line 493
+[12-Mar-2025 13:24:09 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/cms/admin/filemanager/UploadHandler.php on line 48
+[12-Mar-2025 13:24:09 Europe/Rome] PHP Deprecated:  Implicit conversion from float 7.5 to int loses precision in /home/yhopaoqihosting/public_html/cms/admin/filemanager/include/php_image_magician.php on line 493
+[12-Mar-2025 13:26:53 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/cms/admin/filemanager/UploadHandler.php on line 48
+[13-Mar-2025 03:09:20 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/cms/admin/filemanager/UploadHandler.php on line 48
+[13-Mar-2025 03:09:20 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/cms/admin/filemanager/UploadHandler.php on line 48
+[13-Mar-2025 03:10:13 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/cms/admin/filemanager/UploadHandler.php on line 48
+[13-Mar-2025 03:10:58 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/cms/admin/filemanager/UploadHandler.php on line 48
+[13-Mar-2025 03:21:15 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/cms/admin/filemanager/UploadHandler.php on line 48
+[13-Mar-2025 03:21:15 Europe/Rome] PHP Deprecated:  Implicit conversion from float 7.5 to int loses precision in /home/yhopaoqihosting/public_html/cms/admin/filemanager/include/php_image_magician.php on line 493
+[13-Mar-2025 03:21:41 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/cms/admin/filemanager/UploadHandler.php on line 48
+[13-Mar-2025 03:21:42 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/cms/admin/filemanager/UploadHandler.php on line 48
+[13-Mar-2025 03:21:42 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/cms/admin/filemanager/UploadHandler.php on line 48
+[13-Mar-2025 03:22:31 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/cms/admin/filemanager/UploadHandler.php on line 48
+[13-Mar-2025 03:22:31 Europe/Rome] PHP Deprecated:  Implicit conversion from float 30.5 to int loses precision in /home/yhopaoqihosting/public_html/cms/admin/filemanager/include/php_image_magician.php on line 493
+[16-Mar-2025 09:55:41 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[16-Mar-2025 10:01:23 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[16-Mar-2025 10:01:23 Europe/Rome] PHP Deprecated:  Implicit conversion from float 0.5 to int loses precision in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/include/php_image_magician.php on line 493
+[16-Mar-2025 10:02:42 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[16-Mar-2025 10:02:42 Europe/Rome] PHP Deprecated:  Implicit conversion from float 7.5 to int loses precision in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/include/php_image_magician.php on line 493
+[16-Mar-2025 10:03:30 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[16-Mar-2025 10:03:30 Europe/Rome] PHP Deprecated:  Implicit conversion from float 7.5 to int loses precision in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/include/php_image_magician.php on line 493
+[16-Mar-2025 10:05:18 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[16-Mar-2025 10:07:51 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[16-Mar-2025 10:07:51 Europe/Rome] PHP Deprecated:  Implicit conversion from float 7.5 to int loses precision in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/include/php_image_magician.php on line 493
+[16-Mar-2025 10:09:08 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[16-Mar-2025 10:09:08 Europe/Rome] PHP Deprecated:  Implicit conversion from float 0.5 to int loses precision in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/include/php_image_magician.php on line 493
+[16-Mar-2025 10:10:01 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[16-Mar-2025 10:12:05 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 07:43:42 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 07:44:26 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 07:44:27 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 07:44:27 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 07:44:28 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 07:44:28 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 07:44:28 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 07:44:29 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 07:44:29 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 07:44:30 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 07:44:30 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 07:44:31 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 07:44:31 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 07:44:32 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 07:44:32 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 07:44:33 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 07:44:33 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 07:44:34 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 07:44:34 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 07:44:34 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 07:44:35 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 07:44:35 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 07:49:10 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 07:49:10 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 07:49:10 Europe/Rome] PHP Deprecated:  Implicit conversion from float 66.5 to int loses precision in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/include/php_image_magician.php on line 493
+[17-Mar-2025 07:49:10 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 07:49:10 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 07:49:10 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 08:02:12 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 08:02:12 Europe/Rome] PHP Deprecated:  Implicit conversion from float 7.5 to int loses precision in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/include/php_image_magician.php on line 493
+[17-Mar-2025 08:04:01 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 08:04:01 Europe/Rome] PHP Deprecated:  Implicit conversion from float 7.5 to int loses precision in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/include/php_image_magician.php on line 493
+[17-Mar-2025 08:06:04 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 08:52:36 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 08:52:36 Europe/Rome] PHP Deprecated:  Implicit conversion from float 0.5 to int loses precision in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/include/php_image_magician.php on line 493
+[17-Mar-2025 12:51:15 Europe/Rome] PHP Deprecated:  Creation of dynamic property UploadHandler::$response is deprecated in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/UploadHandler.php on line 48
+[17-Mar-2025 12:51:15 Europe/Rome] PHP Deprecated:  Implicit conversion from float 0.5 to int loses precision in /home/yhopaoqihosting/public_html/pianoyuri/admin/filemanager/include/php_image_magician.php on line 493

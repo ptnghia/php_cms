@@ -1,0 +1,42 @@
+<?php
+$info = $d->showthongtin();
+define("_logo",  URLPATH . 'img_data/images/' . $info['icon_share']);
+define("_favicon",  URLPATH . 'img_data/images/' . $info['favicon']);
+define("_bando",  $info['map']);
+define("_backlink",  '<a href="https://lifetech-media.vn/" target="_blank" title="Thiết kế website: Lifetech Media">Thiết kế website: Lifetech Media</a>');
+define("_ten_cong_ty",  $info['company']);
+define("_dia_chi",  $info['address']);
+define("_email",  $info['email']);
+define("_dien_thoai",  $info['dien_thoai']);
+define("_web_page",  $info['website']);
+define("_copyright",  $info['coppy_right']);
+define("_zalo",  $info['zalo']);
+define("_messenger",  $info['messenger']);
+define("_skype",  $info['skype']);
+define("_hotline",  $info['hotline']);
+define("_facebook",  $info['facebook']);
+define("_linkedin",  $info['linkedin']);
+define("_youtube",  $info['youtube']);
+define("_pinterest",  $info['pinterest']);
+define("_instagram",  $info['instagram']);
+define("_twitter",  $info['twitter']);
+define("_telegram",  $info['telegram']);
+define("_whatsapp",  $info['whatsapp']);
+define("_sitekey",  $info['site_key']);
+define("_secretkey",  $info['secret_key']);
+define("_url_page",  $d->fullAddress());
+
+$row_setting_pro = $d->simple_fetch("select setting from #_module where id = 3 ");
+$arrr_setting_pro = json_decode($row_setting_pro['setting'], true);
+define("_heading_cate_pro",  $arrr_setting_pro['heading_cate']);
+define("_heading_ct_pro",  $arrr_setting_pro['heading_ct']);
+define("_heading_home_pro",  $arrr_setting_pro['heading_home']);
+define("_heading_danhmuc_c1",  $arrr_setting_pro['heading_danhmuc_1']);
+define("_heading_danhmuc_c2",  $arrr_setting_pro['heading_danhmuc_2']);
+define("_heading_danhmuc",  $arrr_setting_pro['heading_danhmuc']);
+
+$row_setting_new = $d->simple_fetch("select setting from #_module where id = 2 ");
+$arrr_setting_new = json_decode($row_setting_new['setting'], true);
+define("_heading_cate_new",  $arrr_setting_new['heading_cate']);
+define("_heading_ct_new",  $arrr_setting_new['heading_ct']);
+define("_tac_gia_new",  $arrr_setting_new['author']);
