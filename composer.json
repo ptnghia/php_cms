@@ -1,14 +1,13 @@
 {
-    "name": "Beyond Ecom",
-    "description": "003-beyond-ecom - 2025/03/28 - PHP 8.2",
+    "name": "Cozycandles",
+    "description": "007-cozycandles - 2025/05/02 - PHP 8.2",
     "type": "project",
     "authors": [
         {
             "name": "LifeTech",
-            "email": "contac@lifetech-media.vn"
+            "email": "contact@lifetech-media.vn"
         }
     ],
     "minimum-stability": "stable",
-    "require": {
-    }
+    "require": {}
 }
