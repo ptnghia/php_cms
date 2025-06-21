@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Bootstrap Grid Plugin cho CKEditor</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- CKEditor CSS -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .demo-header {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .demo-content {
+            padding: 30px;
+        }
+        
+        .demo-section {
+            margin-bottom: 40px;
+        }
+        
+        .demo-section h3 {
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .ckeditor-container {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        
+        .output-preview {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .output-preview h4 {
+            color: #495057;
+            margin-bottom: 15px;
+        }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .feature-card h5 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        
+        .btn-demo {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        .btn-demo:hover {
+            background: #0056b3;
+        }
+        
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+        
+        .alert-info {
+            color: #0c5460;
+            background-color: #d1ecf1;
+            border-color: #bee5eb;
+        }
+        
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1>🚀 Bootstrap Grid Plugin Demo</h1>
+            <p>Plugin CKEditor nâng cao cho việc tạo layout responsive Bootstrap</p>
+        </div>
+        
+        <div class="demo-content">
+            <!-- Features Overview -->
+            <div class="demo-section">
+                <h3>✨ Tính năng chính</h3>
+                <div class="feature-list">
+                    <div class="feature-card">
+                        <h5>📱 Responsive Design</h5>
+                        <p>Hỗ trợ đầy đủ các breakpoint Bootstrap: XS, SM, MD, LG, XL với layout riêng biệt cho từng màn hình.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h5>🎨 Template System</h5>
+                        <p>Templates có sẵn: Hero Section, Card Layouts, Content + Sidebar và nhiều layout phổ biến khác.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h5>⚙️ Advanced Options</h5>
+                        <p>Offset columns, alignment options, gutters control và preview real-time.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h5>🔧 Code Quality</h5>
+                        <p>Clean HTML output, namespace functions, better error handling và validation.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CKEditor Demo -->
+            <div class="demo-section">
+                <h3>🖊️ Live Demo</h3>
+                <div class="alert alert-info">
+                    <strong>Hướng dẫn:</strong> Click vào button "Bootstrap Grid" trên toolbar để mở dialog tạo grid layout. Thử nghiệm các tab khác nhau để khám phá tính năng.
+                </div>
+                
+                <div class="ckeditor-container">
+                    <textarea id="editor1" name="editor1">
+                        <h2>Chào mừng đến với Demo Bootstrap Grid Plugin!</h2>
+                        <p>Sử dụng button <strong>"Bootstrap Grid"</strong> trên toolbar để chèn layout responsive.</p>
+                        
+                        <h3>Ví dụ layout đã tạo:</h3>
+                        
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <article>
+                                        <h2>Bài viết chính</h2>
+                                        <p>Đây là nội dung chính của trang web. Nó sẽ chiếm 8/12 cột trên màn hình desktop và tablet.</p>
+                                    </article>
+                                </div>
+                                <div class="col-md-4">
+                                    <aside>
+                                        <h4>Sidebar</h4>
+                                        <ul>
+                                            <li>Liên kết 1</li>
+                                            <li>Liên kết 2</li>
+                                            <li>Liên kết 3</li>
+                                        </ul>
+                                    </aside>
+                                </div>
+                            </div>
+                        </div>
+                    </textarea>
+                </div>
+                
+                <div class="output-preview">
+                    <h4>📋 HTML Output Preview</h4>
+                    <div id="output-content" style="border: 1px solid #ddd; padding: 15px; background: white; border-radius: 4px; min-height: 100px;">
+                        <em>HTML content sẽ hiển thị ở đây khi bạn thay đổi nội dung editor...</em>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Tests -->
+            <div class="demo-section">
+                <h3>🧪 Quick Tests</h3>
+                <div class="alert alert-success">
+                    <strong>Test Cases:</strong> Click các button dưới đây để test nhanh các tính năng của plugin.
+                </div>
+                
+                <button class="btn-demo" onclick="insertHeroSection()">Hero Section Template</button>
+                <button class="btn-demo" onclick="insertThreeCards()">Three Column Cards</button>
+                <button class="btn-demo" onclick="insertTwoColumns()">Two Column Layout</button>
+                <button class="btn-demo" onclick="insertSidebar()">Content + Sidebar</button>
+                <button class="btn-demo" onclick="clearEditor()">Clear Editor</button>
+                <button class="btn-demo" onclick="showHTMLSource()">Show HTML Source</button>
+            </div>
+            
+            <!-- Documentation Links -->
+            <div class="demo-section">
+                <h3>📚 Tài liệu</h3>
+                <p>Để biết thêm chi tiết về cách sử dụng plugin, vui lòng tham khao:</p>
+                <ul>
+                    <li><strong>README.md</strong> - Hướng dẫn đầy đủ về tính năng và API</li>
+                    <li><strong>plugin.js</strong> - Source code chính của plugin</li>
+                    <li><strong>dialogs/bootstrapGrid.js</strong> - Dialog interface code</li>
+                    <li><strong>styles/dialog.css</strong> - CSS styles cho dialog</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- CKEditor Script -->
+    <script src="../../ckeditor.js"></script>
+    <script>
+        // Initialize CKEditor
+        var editor;
+        
+        CKEDITOR.replace('editor1', {
+            height: 400,
+            toolbar: [
+                { name: 'document', items: ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates'] },
+                { name: 'clipboard', items: ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'] },
+                { name: 'editing', items: ['Find', 'Replace', '-', 'SelectAll', '-', 'SpellChecker', 'Scayt'] },
+                '/',
+                { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat'] },
+                { name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl'] },
+                { name: 'links', items: ['Link', 'Unlink', 'Anchor'] },
+                { name: 'insert', items: ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe', 'BootstrapGrid'] },
+                '/',
+                { name: 'styles', items: ['Styles', 'Format', 'Font', 'FontSize'] },
+                { name: 'colors', items: ['TextColor', 'BGColor'] },
+                { name: 'tools', items: ['Maximize', 'ShowBlocks'] }
+            ],
+            extraPlugins: 'bootstrapGrid'
+        });
+        
+        CKEDITOR.on('instanceReady', function(event) {
+            editor = event.editor;
+            
+            // Update output preview when content changes
+            editor.on('change', function() {
+                updateOutputPreview();
+            });
+            
+            // Initial preview update
+            updateOutputPreview();
+        });
+        
+        // Helper functions for demo
+        function updateOutputPreview() {
+            if (editor) {
+                var content = editor.getData();
+                var outputDiv = document.getElementById('output-content');
+                outputDiv.innerHTML = '<pre><code>' + escapeHtml(content) + '</code></pre>';
+            }
+        }
+        
+        function escapeHtml(text) {
+            var map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+        }
+        
+        function insertHeroSection() {
+            if (editor) {
+                var html = '<div class="container">\n' +
+                          '    <div class="row">\n' +
+                          '        <div class="col-md-12">\n' +
+                          '            <div class="jumbotron text-center">\n' +
+                          '                <h1 class="display-4">Tiêu đề chính</h1>\n' +
+                          '                <p class="lead">Mô tả ngắn gọn về sản phẩm hoặc dịch vụ.</p>\n' +
+                          '                <a class="btn btn-primary btn-lg" href="#" role="button">Tìm hiểu thêm</a>\n' +
+                          '            </div>\n' +
+                          '        </div>\n' +
+                          '    </div>\n' +
+                          '</div>';
+                editor.insertHtml(html);
+            }
+        }
+        
+        function insertThreeCards() {
+            if (editor) {
+                var html = '<div class="container">\n' +
+                          '    <div class="row">\n' +
+                          '        <div class="col-md-4">\n' +
+                          '            <div class="card">\n' +
+                          '                <div class="card-body">\n' +
+                          '                    <h5 class="card-title">Card 1</h5>\n' +
+                          '                    <p class="card-text">Nội dung mô tả ngắn gọn.</p>\n' +
+                          '                    <a href="#" class="btn btn-primary">Xem chi tiết</a>\n' +
+                          '                </div>\n' +
+                          '            </div>\n' +
+                          '        </div>\n' +
+                          '        <div class="col-md-4">\n' +
+                          '            <div class="card">\n' +
+                          '                <div class="card-body">\n' +
+                          '                    <h5 class="card-title">Card 2</h5>\n' +
+                          '                    <p class="card-text">Nội dung mô tả ngắn gọn.</p>\n' +
+                          '                    <a href="#" class="btn btn-primary">Xem chi tiết</a>\n' +
+                          '                </div>\n' +
+                          '            </div>\n' +
+                          '        </div>\n' +
+                          '        <div class="col-md-4">\n' +
+                          '            <div class="card">\n' +
+                          '                <div class="card-body">\n' +
+                          '                    <h5 class="card-title">Card 3</h5>\n' +
+                          '                    <p class="card-text">Nội dung mô tả ngắn gọn.</p>\n' +
+                          '                    <a href="#" class="btn btn-primary">Xem chi tiết</a>\n' +
+                          '                </div>\n' +
+                          '            </div>\n' +
+                          '        </div>\n' +
+                          '    </div>\n' +
+                          '</div>';
+                editor.insertHtml(html);
+            }
+        }
+        
+        function insertTwoColumns() {
+            if (editor) {
+                var html = '<div class="container">\n' +
+                          '    <div class="row">\n' +
+                          '        <div class="col-md-6">\n' +
+                          '            <h3>Cột trái</h3>\n' +
+                          '            <p>Nội dung đoạn văn mẫu cho cột bên trái.</p>\n' +
+                          '        </div>\n' +
+                          '        <div class="col-md-6">\n' +
+                          '            <h3>Cột phải</h3>\n' +
+                          '            <p>Nội dung đoạn văn mẫu cho cột bên phải.</p>\n' +
+                          '        </div>\n' +
+                          '    </div>\n' +
+                          '</div>';
+                editor.insertHtml(html);
+            }
+        }
+        
+        function insertSidebar() {
+            if (editor) {
+                var html = '<div class="container">\n' +
+                          '    <div class="row">\n' +
+                          '        <div class="col-md-8">\n' +
+                          '            <article>\n' +
+                          '                <h2>Bài viết chính</h2>\n' +
+                          '                <p>Nội dung bài viết chi tiết...</p>\n' +
+                          '            </article>\n' +
+                          '        </div>\n' +
+                          '        <div class="col-md-4">\n' +
+                          '            <aside>\n' +
+                          '                <h4>Sidebar</h4>\n' +
+                          '                <ul>\n' +
+                          '                    <li>Liên kết 1</li>\n' +
+                          '                    <li>Liên kết 2</li>\n' +
+                          '                    <li>Liên kết 3</li>\n' +
+                          '                </ul>\n' +
+                          '            </aside>\n' +
+                          '        </div>\n' +
+                          '    </div>\n' +
+                          '</div>';
+                editor.insertHtml(html);
+            }
+        }
+        
+        function clearEditor() {
+            if (editor) {
+                editor.setData('<p>Editor đã được xóa. Sử dụng Bootstrap Grid plugin để tạo layout mới!</p>');
+            }
+        }
+        
+        function showHTMLSource() {
+            if (editor) {
+                alert('Xem HTML source trong Output Preview hoặc click button Source trên toolbar!');
+            }
+        }
+    </script>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

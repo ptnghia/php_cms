@@ -165,7 +165,7 @@ function luudulieu($id_module)
                     }
                     $data['mo_ta'] = $d->clear($_POST['mo_ta'][$key]);
                     $data['noi_dung'] = $d->clear($_POST['noi_dung'][$key]);
-                    $data['noi_dung_2'] = $d->clear(addslashes($_POST['noi_dung_2'][$key]));
+                    $data['noi_dung_2'] = $d->clear($_POST['noi_dung_2'][$key]);
                     if (isset($_POST['id_loai_khac'])) {
                         $id_loai_khac = "," . implode(",", $_POST['id_loai_khac']) . ",";
                         $data['id_loai_khac'] = $id_loai_khac;
@@ -214,8 +214,8 @@ function luudulieu($id_module)
                     $data['noindex']        =   isset($_POST['noindex']) ? 1 : 0;
                     $data['so_thu_tu']      =   $so_thu_tu;
                     $data['ma_sp']          =   $d->clear(addslashes($_POST['ma_sp']));
-                    $data['gia']           =   $d->clear(addslashes($_POST['gia']));
-                    $data['khuyen_mai']    =   $d->clear(addslashes($_POST['khuyen_mai']));
+                    $data['gia']            =   (int)$_POST['gia'];
+                    $data['khuyen_mai']     =   (int)$_POST['khuyen_mai'];
 
                     $d->reset();
                     $d->setTable('#_sanpham');
@@ -272,8 +272,8 @@ function luudulieu($id_module)
                     $data['hinh_anh2'] = $hinh_anh2;
                     $data['mo_ta'] = $d->clear($_POST['mo_ta'][$key]);
                     $data['noi_dung'] = $d->clear($_POST['noi_dung'][$key]);
-                    $data['noi_dung_1'] = $d->clear(addslashes($_POST['noi_dung_1'][$key]));
-                    $data['noi_dung_2'] = $d->clear(addslashes($_POST['noi_dung_2'][$key]));
+                    $data['noi_dung_1'] = $d->clear($_POST['noi_dung_1'][$key]);
+                    $data['noi_dung_2'] = $d->clear($_POST['noi_dung_2'][$key]);
                     if (isset($_POST['id_loai_khac'])) {
                         $id_loai_khac = "," . implode(",", $_POST['id_loai_khac']) . ",";
                         $data['id_loai_khac'] = $id_loai_khac;
@@ -322,8 +322,8 @@ function luudulieu($id_module)
                     $data['noindex']        =   isset($_POST['noindex']) ? 1 : 0;
                     $data['so_thu_tu']      =   $so_thu_tu;
                     $data['ma_sp']          =   $d->clear(addslashes($_POST['ma_sp']));
-                    $data['gia']            =   $d->clear(addslashes($_POST['gia']));
-                    $data['khuyen_mai']     =   $d->clear(addslashes($_POST['khuyen_mai']));
+                    $data['gia']            =   (int)$_POST['gia'];
+                    $data['khuyen_mai']     =   (int)$_POST['khuyen_mai'];
                     $data['id_code']        =   $id_code;
                     $data['lang']           =   $value['code'];
                     $d->reset();

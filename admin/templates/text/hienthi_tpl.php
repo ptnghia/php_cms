@@ -26,20 +26,20 @@ if(isset($_GET['delete']) and $_GET['delete']!=''){
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        Text
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="<?=urladmin?>"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-        <li><a href="#">Quản trị giao diện</a></li>
-        <li class="active">Text</li>
-      </ol>
+        <h1>
+            Text
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="<?=urladmin?>"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li><a href="#">Quản trị giao diện</a></li>
+            <li class="active">Text</li>
+        </ol>
     </section>
     <!-- Main content -->
     <section class="content">
         <div class="box box-primary">
             <div class="box-body">
-                <form method="POST" action="" >
+                <form method="POST" action="">
                     <table class="table table-bordered table-striped table-primary table-hover" id="dataTable1">
                         <thead>
                             <tr>
@@ -51,36 +51,40 @@ if(isset($_GET['delete']) and $_GET['delete']!=''){
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($items as $key0 => $item) {?>
+                            <?php foreach ($items as $key0 => $item) {
+                            ?>
                             <tr>
-                                <td class="text-center"><?=$item['id']?></td>
+                                <td class="text-center"><?= $item['id'] ?></td>
                                 <?php foreach (get_json('lang') as $key => $value) {
-                                $arr_lang = json_decode($item['text'], true);
-                                //print_r($arr_lang);
-                                ?>
-                                <td><?=$arr_lang[$value['code']]?></td>
-                                <?php }?>
+                                        $arr_lang = json_decode(stripslashes($item['text']), true); // Fix for PHP 8
+                                    ?>
+                                <td><?= $arr_lang[$value['code']] ?></td>
+                                <?php } ?>
                                 <td class="text-center">
-                                    <a href="index.php?p=<?=$_GET['p']?>&a=man&id=<?=$item['id']?>" class="label label-warning" title="Sửa" style="margin-right: 5px;">
+                                    <a href="index.php?p=<?= $_GET['p'] ?>&a=man&id=<?= $item['id'] ?>"
+                                        class="label label-warning" title="Sửa" style="margin-right: 5px;">
                                         <i class="glyphicon glyphicon-edit"></i> Sửa
                                     </a>
                                 </td>
-                            </tr> 
+                            </tr>
                             <?php } ?>
                         </tbody>
                         <tfoot>
-                            <?php if(isset($_GET['id'])){
-                                $row = $d->simple_fetch("select * from #_text where id = ".(int)$_GET['id']." ");
-                                $arr_lang_edit = json_decode($row['text'], true);
+                            <?php if (isset($_GET['id'])) {
+                                $row = $d->simple_fetch("select * from #_text where id = " . (int)$_GET['id'] . " ");
+                                $arr_lang_edit = json_decode(stripslashes($row['text']), true); // Fix for PHP 8
                             } ?>
                             <tr>
                                 <th>Thêm mới</th>
-                                <?php foreach (get_json('lang') as $key => $value) {?>
+                                <?php foreach (get_json('lang') as $key => $value) { ?>
                                 <th>
-                                    <input style="width: 100%;font-weight: 400;" type="text" class="form-control" value="<?=$arr_lang_edit[$value['code']]?>" name="ten[]" placeholder="Nội dung <?=$value['name']?>" />
+                                    <input style="width: 100%;font-weight: 400;" type="text" class="form-control"
+                                        value="<?= $arr_lang_edit[$value['code']] ?>" name="ten[]"
+                                        placeholder="Nội dung <?= $value['name'] ?>" />
                                 </th>
-                                <?php }?>
-                                <th><button class="btn btn-primary btn-block" type="submit" name="capnhat">Cập nhật</button></th>
+                                <?php } ?>
+                                <th><button class="btn btn-primary btn-block" type="submit" name="capnhat">Cập
+                                        nhật</button></th>
                             </tr>
                         </tfoot>
                     </table>
@@ -94,11 +98,12 @@ if(isset($_GET['delete']) and $_GET['delete']!=''){
 <script src="public/plugin/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="public/plugin/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script>
-    $('#dataTable1').DataTable({
-        'autoWidth'   : false,
-        'searching'   : true,
-        'lengthChange': true,
-        'order': [[0, "desc"]]
-    });
-    
+$('#dataTable1').DataTable({
+    'autoWidth': false,
+    'searching': true,
+    'lengthChange': true,
+    'order': [
+        [0, "desc"]
+    ]
+});
 </script>

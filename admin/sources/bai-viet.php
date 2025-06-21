@@ -118,7 +118,7 @@ function luudulieu($id_module)
                     if ($d->checkLink($data['alias'], $_POST['id_row'][$key]) == 0) {
                         $data['alias'] .= "-" . rand(0, 9);
                     }
-                    $data['mo_ta']      =   $d->clear(addslashes($_POST['mo_ta'][$key]));
+                    $data['mo_ta']      =   $d->clear($_POST['mo_ta'][$key]);
                     $data['noi_dung']   =   $d->clear($_POST['noi_dung'][$key]);
                     $data['nofollow']       =   isset($_POST['nofollow']) ? 1 : 0;
                     $data['noindex']        =   isset($_POST['noindex']) ? 1 : 0;
@@ -189,15 +189,15 @@ function luudulieu($id_module)
                     if ($d->checkLink($data['alias']) == 0) {
                         $data['alias'] .= "-" . rand(0, 9);
                     }
-                    $data['mo_ta']      =   $d->clear(addslashes($_POST['mo_ta'][$key]));
-                    $data['noi_dung']   =   $d->clear($_POST['noi_dung'][$key]);
+                    $data['mo_ta']          =   $d->clear($_POST['mo_ta'][$key]);
+                    $data['noi_dung']       =   $d->clear($_POST['noi_dung'][$key]);
 
-                    $data['title']      = $d->clear(addslashes($_POST['title'][$key]));
-                    $data['keyword']    = $d->clear(addslashes($_POST['keyword'][$key]));
-                    $data['des']        = addslashes($_POST['des'][$key]);
-                    $data['seo_head']        = addslashes($_POST['seo_head'][$key]);
-                    $data['seo_body']        = addslashes($_POST['seo_body'][$key]);
-                    $data['tags_hienthi'] = addslashes($_POST['tags_hienthi'][$key]);
+                    $data['title']          =   $d->clear(addslashes($_POST['title'][$key]));
+                    $data['keyword']        =   $d->clear(addslashes($_POST['keyword'][$key]));
+                    $data['des']            =   addslashes($_POST['des'][$key]);
+                    $data['seo_head']       =   addslashes($_POST['seo_head'][$key]);
+                    $data['seo_body']       =   addslashes($_POST['seo_body'][$key]);
+                    $data['tags_hienthi']   =   addslashes($_POST['tags_hienthi'][$key]);
                     //xu ly tags
                     $tags = addslashes($_POST['tags_hienthi'][$key]);
                     $tg2 = explode(',', $tags);

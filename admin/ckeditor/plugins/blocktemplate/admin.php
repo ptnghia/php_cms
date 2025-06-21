@@ -2,45 +2,73 @@
 // Thiết lập header
 header('Content-Type: text/html; charset=utf-8');
 session_start();
+
+// Enhanced security checks
 if (!isset($_SESSION["user_hash"])) {
-    die;
+    die('Access denied. Please login.');
 }
+
+// CSRF Protection
+if (!isset($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
 // Thông tin phiên làm việc
-$currentTime = '2025-03-01 08:10:44';
-$currentUser = 'ptnghia';
+$currentTime = date('Y-m-d H:i:s');
+$currentUser = htmlspecialchars($_SESSION['username'] ?? 'Unknown User');
+
+// Security configuration
+$maxFileSize = 2 * 1024 * 1024; // 2MB
+$allowedImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+$allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
 
 // Đường dẫn đến file JSON
 $blocksFile = __DIR__ . '/blocks.json';
 
 // Xử lý POST request
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // CSRF Protection
+    if (!isset($_POST['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+        die('CSRF token mismatch. Access denied.');
+    }
+    
     $action = isset($_POST['action']) ? $_POST['action'] : '';
 
-    switch ($action) {
-        case 'add_block':
-            // Thêm block mới
-            addBlock($_POST);
-            break;
+    try {
+        switch ($action) {
+            case 'add_block':
+                // Thêm block mới
+                addBlock($_POST);
+                break;
 
-        case 'edit_block':
-            // Sửa block
-            editBlock($_POST['id'], $_POST);
-            break;
+            case 'edit_block':
+                // Sửa block
+                editBlock($_POST['id'], $_POST);
+                break;
 
-        case 'delete_block':
-            // Xóa block
-            deleteBlock($_POST['id']);
-            break;
+            case 'delete_block':
+                // Xóa block
+                deleteBlock($_POST['id']);
+                break;
 
-        case 'add_category':
-            // Thêm danh mục mới
-            addCategory($_POST);
-            break;
+            case 'add_category':
+                // Thêm danh mục mới
+                addCategory($_POST);
+                break;
+                
+            default:
+                throw new Exception('Invalid action');
+        }
+
+        // Chuyển hướng để tránh gửi lại form
+        header('Location: ' . $_SERVER['PHP_SELF'] . '?updated=1');
+        exit;
+        
+    } catch (Exception $e) {
+        error_log('Block Template Error: ' . $e->getMessage());
+        header('Location: ' . $_SERVER['PHP_SELF'] . '?error=' . urlencode('Có lỗi xảy ra: ' . $e->getMessage()));
+        exit;
     }
-
-    // Chuyển hướng để tránh gửi lại form
-    header('Location: ' . $_SERVER['PHP_SELF'] . '?updated=1');
-    exit;
 }
 
 // Đọc dữ liệu blocks
@@ -75,42 +103,161 @@ function saveBlocksData($data)
     file_put_contents($blocksFile, $jsonContent);
 }
 
-// Thêm block mới
+// Thêm block mới với enhanced validation
 function addBlock($formData)
 {
+    global $maxFileSize, $allowedImageTypes, $allowedExtensions;
+    
+    // Validate input data
+    validateBlockData($formData);
+    
     $data = readBlocksData();
 
-    // Xử lý upload thumbnail nếu có
+    // Xử lý upload thumbnail nếu có với security validation
     $thumbnailPath = 'images/blocks/default.png'; // Mặc định
     if (isset($_FILES['thumbnail']) && $_FILES['thumbnail']['error'] === 0) {
-        $targetDir = __DIR__ . '/images/blocks/';
-        $fileName = time() . '_' . basename($_FILES['thumbnail']['name']);
-        $targetFile = $targetDir . $fileName;
-
-        if (move_uploaded_file($_FILES['thumbnail']['tmp_name'], $targetFile)) {
-            $thumbnailPath = 'images/blocks/' . $fileName;
-        }
+        $thumbnailPath = handleImageUpload($_FILES['thumbnail']);
     }
 
     // Tạo ID duy nhất cho block
     $blockId = 'block_' . time() . '_' . rand(1000, 9999);
 
+    // Sanitize input data
+    $sanitizedData = sanitizeBlockData($formData);
+
     // Thêm block mới vào dữ liệu
     $data['blocks'][] = [
         'id' => $blockId,
-        'name' => $formData['name'],
-        'description' => $formData['description'],
-        'category' => $formData['category'],
+        'name' => $sanitizedData['name'],
+        'description' => $sanitizedData['description'],
+        'category' => $sanitizedData['category'],
         'thumbnail' => $thumbnailPath,
-        'code_html' => $formData['code_html']
+        'code_html' => $sanitizedData['code_html'],
+        'created_at' => date('Y-m-d H:i:s'),
+        'created_by' => $_SESSION['username'] ?? 'unknown'
     ];
 
     saveBlocksData($data);
 }
 
-// Sửa block
+// Enhanced validation và security functions đã chuyển xuống dưới
+
+// Enhanced validation và security functions
+
+// Validate block data
+function validateBlockData($formData) {
+    $errors = [];
+    
+    // Validate required fields
+    if (empty(trim($formData['name']))) {
+        $errors[] = 'Tên block không được để trống';
+    }
+    
+    if (empty(trim($formData['description']))) {
+        $errors[] = 'Mô tả không được để trống';
+    }
+    
+    if (empty(trim($formData['category']))) {
+        $errors[] = 'Danh mục không được để trống';
+    }
+    
+    if (empty(trim($formData['code_html']))) {
+        $errors[] = 'Code HTML không được để trống';
+    }
+    
+    // Validate length limits
+    if (strlen($formData['name']) > 255) {
+        $errors[] = 'Tên block không được quá 255 ký tự';
+    }
+    
+    if (strlen($formData['description']) > 500) {
+        $errors[] = 'Mô tả không được quá 500 ký tự';
+    }
+    
+    if (strlen($formData['code_html']) > 50000) {
+        $errors[] = 'Code HTML không được quá 50KB';
+    }
+    
+    // Check for potential XSS in name and description
+    if (preg_match('/<script|javascript:|on\w+=/i', $formData['name'])) {
+        $errors[] = 'Tên block chứa nội dung không an toàn';
+    }
+    
+    if (preg_match('/<script|javascript:|on\w+=/i', $formData['description'])) {
+        $errors[] = 'Mô tả chứa nội dung không an toàn';
+    }
+    
+    if (!empty($errors)) {
+        throw new Exception(implode('; ', $errors));
+    }
+}
+
+// Sanitize block data
+function sanitizeBlockData($formData) {
+    return [
+        'name' => htmlspecialchars(trim($formData['name']), ENT_QUOTES, 'UTF-8'),
+        'description' => htmlspecialchars(trim($formData['description']), ENT_QUOTES, 'UTF-8'),
+        'category' => preg_replace('/[^a-zA-Z0-9_-]/', '', trim($formData['category'])),
+        'code_html' => trim($formData['code_html']) // HTML content - keep as is but validate separately
+    ];
+}
+
+// Handle image upload with security validation
+function handleImageUpload($file) {
+    global $maxFileSize, $allowedImageTypes, $allowedExtensions;
+    
+    // Check for upload errors
+    if ($file['error'] !== UPLOAD_ERR_OK) {
+        throw new Exception('Upload failed with error code: ' . $file['error']);
+    }
+    
+    // Check file size
+    if ($file['size'] > $maxFileSize) {
+        throw new Exception('File quá lớn. Kích thước tối đa là ' . ($maxFileSize / 1024 / 1024) . 'MB');
+    }
+    
+    // Check MIME type
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+    $mimeType = finfo_file($finfo, $file['tmp_name']);
+    finfo_close($finfo);
+    
+    if (!in_array($mimeType, $allowedImageTypes)) {
+        throw new Exception('Loại file không được phép. Chỉ chấp nhận: ' . implode(', ', $allowedImageTypes));
+    }
+    
+    // Check file extension
+    $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+    if (!in_array($extension, $allowedExtensions)) {
+        throw new Exception('Phần mở rộng file không được phép. Chỉ chấp nhận: ' . implode(', ', $allowedExtensions));
+    }
+    
+    // Generate safe filename
+    $safeFileName = time() . '_' . preg_replace('/[^a-zA-Z0-9.-]/', '_', basename($file['name']));
+    $targetDir = __DIR__ . '/images/blocks/';
+    
+    // Create directory if not exists
+    if (!is_dir($targetDir)) {
+        if (!mkdir($targetDir, 0755, true)) {
+            throw new Exception('Không thể tạo thư mục upload');
+        }
+    }
+    
+    $targetFile = $targetDir . $safeFileName;
+    
+    // Move uploaded file
+    if (!move_uploaded_file($file['tmp_name'], $targetFile)) {
+        throw new Exception('Không thể lưu file upload');
+    }
+    
+    return 'images/blocks/' . $safeFileName;
+}
+
+// Enhanced edit function
 function editBlock($blockId, $formData)
 {
+    // Validate input data
+    validateBlockData($formData);
+    
     $data = readBlocksData();
 
     foreach ($data['blocks'] as $key => $block) {
@@ -118,28 +265,29 @@ function editBlock($blockId, $formData)
             // Xử lý upload thumbnail mới nếu có
             $thumbnailPath = $block['thumbnail']; // Giữ nguyên nếu không có upload mới
             if (isset($_FILES['thumbnail']) && $_FILES['thumbnail']['error'] === 0) {
-                $targetDir = __DIR__ . '/images/blocks/';
-                $fileName = time() . '_' . basename($_FILES['thumbnail']['name']);
-                $targetFile = $targetDir . $fileName;
-
-                if (move_uploaded_file($_FILES['thumbnail']['tmp_name'], $targetFile)) {
-                    // Xóa thumbnail cũ nếu không phải mặc định
-                    if ($thumbnailPath !== 'images/blocks/default.png' && file_exists(__DIR__ . '/' . $thumbnailPath)) {
-                        unlink(__DIR__ . '/' . $thumbnailPath);
-                    }
-
-                    $thumbnailPath = 'images/blocks/' . $fileName;
+                $newThumbnailPath = handleImageUpload($_FILES['thumbnail']);
+                
+                // Xóa thumbnail cũ nếu không phải mặc định
+                if ($thumbnailPath !== 'images/blocks/default.png' && file_exists(__DIR__ . '/' . $thumbnailPath)) {
+                    unlink(__DIR__ . '/' . $thumbnailPath);
                 }
+                
+                $thumbnailPath = $newThumbnailPath;
             }
+
+            // Sanitize input data
+            $sanitizedData = sanitizeBlockData($formData);
 
             // Cập nhật thông tin block
             $data['blocks'][$key] = [
                 'id' => $blockId,
-                'name' => $formData['name'],
-                'description' => $formData['description'],
-                'category' => $formData['category'],
+                'name' => $sanitizedData['name'],
+                'description' => $sanitizedData['description'],
+                'category' => $sanitizedData['category'],
                 'thumbnail' => $thumbnailPath,
-                'code_html' => $formData['code_html']
+                'code_html' => $sanitizedData['code_html'],
+                'updated_at' => date('Y-m-d H:i:s'),
+                'updated_by' => $_SESSION['username'] ?? 'unknown'
             ];
 
             break;
@@ -149,13 +297,56 @@ function editBlock($blockId, $formData)
     saveBlocksData($data);
 }
 
-// Xóa block
+// Enhanced addCategory function
+function addCategory($formData)
+{
+    // Validate category name
+    if (empty(trim($formData['name']))) {
+        throw new Exception('Tên danh mục không được để trống');
+    }
+    
+    if (strlen($formData['name']) > 100) {
+        throw new Exception('Tên danh mục không được quá 100 ký tự');
+    }
+    
+    $data = readBlocksData();
+
+    // Check for duplicate category names
+    foreach ($data['categories'] as $category) {
+        if (strtolower(trim($category['name'])) === strtolower(trim($formData['name']))) {
+            throw new Exception('Tên danh mục đã tồn tại');
+        }
+    }
+
+    // Tạo ID duy nhất cho danh mục
+    $categoryId = 'cat_' . time() . '_' . rand(100, 999);
+
+    // Thêm danh mục mới vào dữ liệu
+    $data['categories'][] = [
+        'id' => $categoryId,
+        'name' => htmlspecialchars(trim($formData['name']), ENT_QUOTES, 'UTF-8'),
+        'created_at' => date('Y-m-d H:i:s'),
+        'created_by' => $_SESSION['username'] ?? 'unknown'
+    ];
+
+    saveBlocksData($data);
+}
+
+// Enhanced deleteBlock function
 function deleteBlock($blockId)
 {
+    // Validate block ID
+    if (empty($blockId) || !preg_match('/^block_\d+_\d+$/', $blockId)) {
+        throw new Exception('Block ID không hợp lệ');
+    }
+    
     $data = readBlocksData();
+    $blockFound = false;
 
     foreach ($data['blocks'] as $key => $block) {
         if ($block['id'] === $blockId) {
+            $blockFound = true;
+            
             // Xóa thumbnail nếu không phải mặc định
             if ($block['thumbnail'] !== 'images/blocks/default.png' && file_exists(__DIR__ . '/' . $block['thumbnail'])) {
                 unlink(__DIR__ . '/' . $block['thumbnail']);
@@ -166,23 +357,10 @@ function deleteBlock($blockId)
             break;
         }
     }
-
-    saveBlocksData($data);
-}
-
-// Thêm danh mục mới
-function addCategory($formData)
-{
-    $data = readBlocksData();
-
-    // Tạo ID duy nhất cho danh mục
-    $categoryId = 'cat_' . time() . '_' . rand(100, 999);
-
-    // Thêm danh mục mới vào dữ liệu
-    $data['categories'][] = [
-        'id' => $categoryId,
-        'name' => $formData['name']
-    ];
+    
+    if (!$blockFound) {
+        throw new Exception('Không tìm thấy block cần xóa');
+    }
 
     saveBlocksData($data);
 }
@@ -243,6 +421,15 @@ $blocksData = readBlocksData();
         <?php if (isset($_GET['updated'])): ?>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 Cập nhật thành công!
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php endif; ?>
+
+        <?php if (isset($_GET['error'])): ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <?php echo htmlspecialchars(urldecode($_GET['error'])); ?>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -376,6 +563,7 @@ $blocksData = readBlocksData();
             <div class="modal-content">
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="action" value="add_block">
+                    <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
 
                     <div class="modal-header">
                         <h5 class="modal-title" id="addBlockModalLabel">Thêm Block mới</h5>
@@ -427,6 +615,7 @@ $blocksData = readBlocksData();
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" id="editBlockForm">
                     <input type="hidden" name="action" value="edit_block">
                     <input type="hidden" name="id" id="edit_block_id">
+                    <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
 
                     <div class="modal-header">
                         <h5 class="modal-title" id="editBlockModalLabel">Sửa Block</h5>
@@ -474,6 +663,7 @@ $blocksData = readBlocksData();
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="deleteBlockForm">
                     <input type="hidden" name="action" value="delete_block">
                     <input type="hidden" name="id" id="delete_block_id">
+                    <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
 
                     <div class="modal-header">
                         <h5 class="modal-title" id="deleteBlockModalLabel">Xác nhận xóa Block</h5>
@@ -500,6 +690,7 @@ $blocksData = readBlocksData();
             <div class="modal-content">
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                     <input type="hidden" name="action" value="add_category">
+                    <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
 
                     <div class="modal-header">
                         <h5 class="modal-title" id="addCategoryModalLabel">Thêm Danh mục mới</h5>

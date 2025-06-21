@@ -1,0 +1,287 @@
+/* Bootstrap Table Plugin Styles */
+
+/* Dialog styling */
+.cke_dialog_body .cke_dialog_tabs .cke_dialog_tab:contains('Table Classes') {
+    background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+}
+
+/* Preview table styling */
+#table-preview {
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 15px;
+    background: #f8f9fa;
+    max-height: 200px;
+    overflow: auto;
+    margin: 10px 0;
+}
+
+#table-preview table {
+    margin: 0 !important;
+    width: 100%;
+    font-size: 12px;
+}
+
+/* Fieldset styling */
+.cke_dialog fieldset {
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 15px;
+    margin: 10px 0;
+    background: #fff;
+}
+
+.cke_dialog legend {
+    font-weight: bold;
+    color: #495057;
+    padding: 0 10px;
+    font-size: 14px;
+}
+
+/* Checkbox and radio styling */
+.cke_dialog input[type="checkbox"],
+.cke_dialog input[type="radio"] {
+    margin-right: 8px;
+}
+
+.cke_dialog label {
+    display: block;
+    margin: 8px 0;
+    color: #495057;
+    font-size: 13px;
+}
+
+/* Info boxes */
+.bootstrap-table-info {
+    background: #e3f2fd;
+    border: 1px solid #90caf9;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 12px;
+    color: #1565c0;
+}
+
+.bootstrap-table-warning {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 12px;
+    color: #856404;
+}
+
+/* Custom textarea styling */
+.cke_dialog textarea {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 8px;
+    font-family: monospace;
+    font-size: 12px;
+    background: #f8f9fa;
+}
+
+/* Button styling for consistency */
+.cke_dialog .cke_dialog_footer_buttons .cke_button {
+    background: linear-gradient(to bottom, #007bff, #0056b3);
+    border: 1px solid #0056b3;
+    color: white;
+    border-radius: 4px;
+    padding: 8px 16px;
+}
+
+.cke_dialog .cke_dialog_footer_buttons .cke_button:hover {
+    background: linear-gradient(to bottom, #0056b3, #004085);
+}
+
+/* Context menu styling */
+.cke_menu .cke_menuitem .cke_menuitem_label:contains('Bootstrap Table') {
+    font-weight: bold;
+}
+
+/* Toolbar button icon using CSS instead of PNG */
+.cke_button_icon.cke_button__bootstraptable_icon {
+    background-image: none !important;
+    background-color: #007bff;
+    border-radius: 2px;
+    position: relative;
+}
+
+.cke_button_icon.cke_button__bootstraptable_icon:before {
+    content: "B";
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1;
+}
+
+.cke_button_icon.cke_button__bootstraptable_icon:after {
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 8px;
+    height: 6px;
+    border: 1px solid white;
+    border-top: none;
+    border-right: none;
+    border-bottom: 2px solid white;
+}
+
+/* Table with Bootstrap classes preview */
+.bootstrap-table-preview {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.bootstrap-table-preview th,
+.bootstrap-table-preview td {
+    padding: 8px;
+    border: 1px solid #dee2e6;
+    text-align: left;
+}
+
+.bootstrap-table-preview th {
+    background-color: #e9ecef;
+    font-weight: bold;
+}
+
+/* Responsive wrapper indication */
+.table-responsive-wrapper {
+    border: 2px dashed #007bff;
+    border-radius: 4px;
+    padding: 2px;
+    margin: 2px 0;
+    position: relative;
+}
+
+.table-responsive-wrapper:before {
+    content: "Responsive Wrapper";
+    position: absolute;
+    top: -10px;
+    left: 5px;
+    background: white;
+    color: #007bff;
+    font-size: 10px;
+    padding: 0 5px;
+    font-weight: bold;
+}
+
+/* Contextual color previews */
+.color-preview {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.color-preview.table-primary { background-color: #cce5ff; }
+.color-preview.table-secondary { background-color: #e2e3e5; }
+.color-preview.table-success { background-color: #d4edda; }
+.color-preview.table-danger { background-color: #f5c6cb; }
+.color-preview.table-warning { background-color: #fff3cd; }
+.color-preview.table-info { background-color: #d1ecf1; }
+.color-preview.table-light { background-color: #fefefe; }
+.color-preview.table-dark { background-color: #c6c8ca; }
+
+/* Help text styling */
+.bootstrap-table-help {
+    font-size: 11px;
+    color: #6c757d;
+    font-style: italic;
+    margin-top: 5px;
+    line-height: 1.4;
+}
+
+/* Animated checkbox for better UX */
+.cke_dialog input[type="checkbox"] {
+    position: relative;
+    cursor: pointer;
+}
+
+.cke_dialog input[type="checkbox"]:checked {
+    animation: checkboxPulse 0.3s ease;
+}
+
+@keyframes checkboxPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Improved spacing for dialog content */
+.cke_dialog_contents_body {
+    padding: 20px !important;
+}
+
+.cke_dialog .cke_dialog_page_contents {
+    margin: 0 !important;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .cke_dialog {
+        width: 95% !important;
+        margin: 2.5% !important;
+    }
+    
+    #table-preview {
+        max-height: 150px;
+        font-size: 10px;
+    }
+    
+    .cke_dialog fieldset {
+        padding: 10px;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .bootstrap-table-info {
+        background: white;
+        border: 2px solid black;
+        color: black;
+    }
+    
+    .bootstrap-table-warning {
+        background: yellow;
+        border: 2px solid black;
+        color: black;
+    }
+}
+
+/* Print styles */
+@media print {
+    .cke_dialog {
+        display: none !important;
+    }
+}
+
+/* Dark theme support */
+@media (prefers-color-scheme: dark) {
+    .cke_dialog fieldset {
+        background: #2d3748;
+        border-color: #4a5568;
+        color: #e2e8f0;
+    }
+    
+    #table-preview {
+        background: #2d3748;
+        border-color: #4a5568;
+        color: #e2e8f0;
+    }
+    
+    .cke_dialog textarea {
+        background: #2d3748;
+        border-color: #4a5568;
+        color: #e2e8f0;
+    }
+}

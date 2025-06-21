@@ -1,13 +1,56 @@
 CKEDITOR.dialog.add('bootstrapGridDialog', function(editor) {
+    var gridConfig = {
+        layout: { md: [12] },
+        offsets: {},
+        alignment: {},
+        currentBreakpoint: 'md',
+        useContainer: true,
+        useGutters: true,
+        template: null
+    };
+
     return {
         title: 'Chèn Bootstrap Grid',
-        minWidth: 600,
-        minHeight: 400,
+        minWidth: 800,
+        minHeight: 600,
         contents: [
             {
                 id: 'tab-basic',
-                label: 'Bố cục lưới',
+                label: 'Bố cục cơ bản',
                 elements: [
+                    {
+                        type: 'select',
+                        id: 'template',
+                        label: 'Template có sẵn',
+                        items: [
+                            ['Không sử dụng template', ''],
+                            ['Hero Section', 'hero'],
+                            ['Ba cột Cards', 'three-cards'],
+                            ['Hai cột nội dung', 'two-columns'],
+                            ['Nội dung + Sidebar', 'sidebar']
+                        ],
+                        'default': '',
+                        onChange: function() {
+                            var templateId = this.getValue();
+                            var dialog = this.getDialog();
+                            
+                            if (templateId && CKEDITOR.plugins.bootstrapGrid.templates[templateId]) {
+                                var template = CKEDITOR.plugins.bootstrapGrid.templates[templateId];
+                                gridConfig.template = templateId;
+                                gridConfig.layout = template.layout;
+                                
+                                // Update layout display
+                                var layoutSelect = dialog.getContentElement('tab-basic', 'layout');
+                                var layoutStr = template.layout.md.join(',');
+                                layoutSelect.setValue(layoutStr);
+                                
+                                // Update preview
+                                CKEDITOR.plugins.bootstrapGrid.updatePreview(gridConfig, editor.id);
+                            } else {
+                                gridConfig.template = null;
+                            }
+                        }
+                    },
                     {
                         type: 'select',
                         id: 'layout',
@@ -24,28 +67,24 @@ CKEDITOR.dialog.add('bootstrapGridDialog', function(editor) {
                         ],
                         'default': '12',
                         onChange: function() {
-                            // Cập nhật bản xem trước khi bố cục thay đổi
-                            updatePreview(this.getValue(), editor.id);
-                        },
-                        setup: function(widget) {
-                            this.setValue('12');
+                            var layoutStr = this.getValue();
+                            var layout = layoutStr.split(',').map(function(col) { 
+                                return parseInt(col.trim()); 
+                            });
+                            
+                            gridConfig.layout[gridConfig.currentBreakpoint] = layout;
+                            gridConfig.template = null; // Clear template when manual layout is selected
+                            
+                            var dialog = this.getDialog();
+                            dialog.getContentElement('tab-basic', 'template').setValue('');
+                            
+                            CKEDITOR.plugins.bootstrapGrid.updatePreview(gridConfig, editor.id);
                         }
-                    },
-                    {
-                        type: 'checkbox',
-                        id: 'container',
-                        label: 'Thêm lớp container',
-                        'default': true
-                    },
-                    {
-                        type: 'html',
-                        id: 'previewContainer', // Thêm ID cho container
-                        html: '<div id="bootstrapGridPreview_' + editor.id + '" class="grid-preview"></div>'
                     },
                     {
                         type: 'text',
                         id: 'customLayout',
-                        label: 'Bố cục tùy chỉnh (các số cột Bootstrap cách nhau bằng dấu phẩy, ví dụ: "3,6,3")',
+                        label: 'Bố cục tùy chỉnh (các số cột Bootstrap cách nhau bằng dấu phẩy)',
                         validate: function() {
                             var value = this.getValue();
                             if (value) {
@@ -53,79 +92,245 @@ CKEDITOR.dialog.add('bootstrapGridDialog', function(editor) {
                                     return parseInt(col.trim()); 
                                 });
                                 
-                                var sum = cols.reduce(function(a, b) { return a + b; }, 0);
-                                if (sum !== 12) {
-                                    alert('Chiều rộng các cột phải tổng cộng là 12.');
-                                    return false;
-                                }
-                                
-                                for (var i = 0; i < cols.length; i++) {
-                                    if (isNaN(cols[i]) || cols[i] < 1 || cols[i] > 12) {
-                                        alert('Mỗi cột phải là một số từ 1 đến 12.');
-                                        return false;
-                                    }
-                                }
+                                return CKEDITOR.plugins.bootstrapGrid.validateLayout(cols, gridConfig.currentBreakpoint);
                             }
                             return true;
+                        },
+                        onChange: function() {
+                            var value = this.getValue();
+                            if (value) {
+                                var layout = value.split(',').map(function(col) { 
+                                    return parseInt(col.trim()); 
+                                });
+                                
+                                if (CKEDITOR.plugins.bootstrapGrid.validateLayout(layout, gridConfig.currentBreakpoint)) {
+                                    gridConfig.layout[gridConfig.currentBreakpoint] = layout;
+                                    gridConfig.template = null;
+                                    
+                                    var dialog = this.getDialog();
+                                    dialog.getContentElement('tab-basic', 'template').setValue('');
+                                    
+                                    CKEDITOR.plugins.bootstrapGrid.updatePreview(gridConfig, editor.id);
+                                }
+                            }
+                        }
+                    },
+                    {
+                        type: 'html',
+                        html: '<div id="bootstrapGridPreview_' + editor.id + '" class="grid-preview"></div>'
+                    }
+                ]
+            },
+            {
+                id: 'tab-responsive',
+                label: 'Responsive',
+                elements: [
+                    {
+                        type: 'hbox',
+                        children: [
+                            {
+                                type: 'button',
+                                id: 'btn-xs',
+                                label: 'XS',
+                                title: 'Extra Small (≥0px)',
+                                onClick: function() {
+                                    gridConfig.currentBreakpoint = 'xs';
+                                    updateBreakpointUI(this.getDialog(), 'xs');
+                                }
+                            },
+                            {
+                                type: 'button',
+                                id: 'btn-sm',
+                                label: 'SM',
+                                title: 'Small (≥576px)',
+                                onClick: function() {
+                                    gridConfig.currentBreakpoint = 'sm';
+                                    updateBreakpointUI(this.getDialog(), 'sm');
+                                }
+                            },
+                            {
+                                type: 'button',
+                                id: 'btn-md',
+                                label: 'MD',
+                                title: 'Medium (≥768px)',
+                                onClick: function() {
+                                    gridConfig.currentBreakpoint = 'md';
+                                    updateBreakpointUI(this.getDialog(), 'md');
+                                }
+                            },
+                            {
+                                type: 'button',
+                                id: 'btn-lg',
+                                label: 'LG',
+                                title: 'Large (≥992px)',
+                                onClick: function() {
+                                    gridConfig.currentBreakpoint = 'lg';
+                                    updateBreakpointUI(this.getDialog(), 'lg');
+                                }
+                            },
+                            {
+                                type: 'button',
+                                id: 'btn-xl',
+                                label: 'XL',
+                                title: 'Extra Large (≥1200px)',
+                                onClick: function() {
+                                    gridConfig.currentBreakpoint = 'xl';
+                                    updateBreakpointUI(this.getDialog(), 'xl');
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        type: 'text',
+                        id: 'responsiveLayout',
+                        label: 'Layout cho breakpoint hiện tại',
+                        onChange: function() {
+                            var value = this.getValue();
+                            if (value) {
+                                var layout = value.split(',').map(function(col) { 
+                                    return parseInt(col.trim()); 
+                                });
+                                
+                                if (CKEDITOR.plugins.bootstrapGrid.validateLayout(layout, gridConfig.currentBreakpoint)) {
+                                    gridConfig.layout[gridConfig.currentBreakpoint] = layout;
+                                    CKEDITOR.plugins.bootstrapGrid.updatePreview(gridConfig, editor.id);
+                                }
+                            }
+                        }
+                    },
+                    {
+                        type: 'text',
+                        id: 'offsetLayout',
+                        label: 'Offset cho từng cột (cách nhau bằng dấu phẩy, 0 = không offset)',
+                        onChange: function() {
+                            var value = this.getValue();
+                            if (value) {
+                                var offsets = value.split(',').map(function(offset) { 
+                                    return parseInt(offset.trim()) || 0; 
+                                });
+                                
+                                if (!gridConfig.offsets[gridConfig.currentBreakpoint]) {
+                                    gridConfig.offsets[gridConfig.currentBreakpoint] = {};
+                                }
+                                
+                                offsets.forEach(function(offset, index) {
+                                    gridConfig.offsets[gridConfig.currentBreakpoint][index] = offset;
+                                });
+                                
+                                CKEDITOR.plugins.bootstrapGrid.updatePreview(gridConfig, editor.id);
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                id: 'tab-advanced',
+                label: 'Nâng cao',
+                elements: [
+                    {
+                        type: 'checkbox',
+                        id: 'container',
+                        label: 'Thêm lớp container',
+                        'default': true,
+                        onChange: function() {
+                            gridConfig.useContainer = this.getValue();
+                        }
+                    },
+                    {
+                        type: 'checkbox',
+                        id: 'gutters',
+                        label: 'Sử dụng gutters (khoảng cách giữa các cột)',
+                        'default': true,
+                        onChange: function() {
+                            gridConfig.useGutters = this.getValue();
+                        }
+                    },
+                    {
+                        type: 'select',
+                        id: 'horizontalAlign',
+                        label: 'Căn chỉnh ngang',
+                        items: [
+                            ['Mặc định', ''],
+                            ['Bắt đầu', 'start'],
+                            ['Giữa', 'center'],
+                            ['Kết thúc', 'end'],
+                            ['Xung quanh', 'around'],
+                            ['Giữa các phần tử', 'between']
+                        ],
+                        'default': '',
+                        onChange: function() {
+                            gridConfig.alignment.horizontal = this.getValue();
+                        }
+                    },
+                    {
+                        type: 'select',
+                        id: 'verticalAlign',
+                        label: 'Căn chỉnh dọc',
+                        items: [
+                            ['Mặc định', ''],
+                            ['Trên cùng', 'start'],
+                            ['Giữa', 'center'],
+                            ['Dưới cùng', 'end'],
+                            ['Căn đều', 'stretch']
+                        ],
+                        'default': '',
+                        onChange: function() {
+                            gridConfig.alignment.vertical = this.getValue();
                         }
                     }
                 ]
             }
         ],
         onShow: function() {
-            // Khởi tạo bản xem trước khi mở hộp thoại
-            updatePreview('12', editor.id);
+            // Initialize preview
+            CKEDITOR.plugins.bootstrapGrid.updatePreview(gridConfig, editor.id);
+            
+            // Set active breakpoint button
+            updateBreakpointUI(this, gridConfig.currentBreakpoint);
         },
         onOk: function() {
-            var dialog = this;
-            var useContainer = dialog.getValueOf('tab-basic', 'container');
-            var layout = dialog.getValueOf('tab-basic', 'layout');
-            var customLayout = dialog.getValueOf('tab-basic', 'customLayout');
-            
-            var columns = customLayout ? customLayout.split(',').map(function(col) { 
-                return parseInt(col.trim()); 
-            }) : layout.split(',').map(function(col) { 
-                return parseInt(col); 
-            });
-            
-            var html = useContainer ? '<div class="container">\n' : '';
-            html += '    <div class="row">\n';
-            
-            columns.forEach(function(col, index) {
-                html += '        <div class="col-md-' + col + '">\n';
-                html += '            <p>Cột ' + (index + 1) + '</p>\n';
-                html += '        </div>\n';
-            });
-            
-            html += '    </div>\n';
-            html += useContainer ? '</div>' : '';
-            
+            var html = CKEDITOR.plugins.bootstrapGrid.generateGridHTML(gridConfig);
             editor.insertHtml(html);
         }
     };
+    
+    function updateBreakpointUI(dialog, breakpoint) {
+        // Update button styles (simulate active state)
+        var breakpoints = ['xs', 'sm', 'md', 'lg', 'xl'];
+        breakpoints.forEach(function(bp) {
+            var btn = dialog.getContentElement('tab-responsive', 'btn-' + bp);
+            if (btn && btn.getElement()) {
+                var element = btn.getElement();
+                if (bp === breakpoint) {
+                    element.addClass('active');
+                } else {
+                    element.removeClass('active');
+                }
+            }
+        });
+        
+        // Update layout input for current breakpoint
+        var layoutInput = dialog.getContentElement('tab-responsive', 'responsiveLayout');
+        if (layoutInput && gridConfig.layout[breakpoint]) {
+            layoutInput.setValue(gridConfig.layout[breakpoint].join(','));
+        } else {
+            layoutInput.setValue('');
+        }
+        
+        // Update offset input for current breakpoint
+        var offsetInput = dialog.getContentElement('tab-responsive', 'offsetLayout');
+        if (offsetInput && gridConfig.offsets[breakpoint]) {
+            var offsets = [];
+            var maxIndex = Math.max.apply(Math, Object.keys(gridConfig.offsets[breakpoint]).map(Number));
+            for (var i = 0; i <= maxIndex; i++) {
+                offsets.push(gridConfig.offsets[breakpoint][i] || 0);
+            }
+            offsetInput.setValue(offsets.join(','));
+        } else {
+            offsetInput.setValue('');
+        }
+        
+        // Update preview
+        CKEDITOR.plugins.bootstrapGrid.updatePreview(gridConfig, editor.id);
+    }
 });
-
-// Function to update the preview
-function updatePreview(layout, editorId) {
-    var previewDiv = document.getElementById('bootstrapGridPreview_' + editorId);
-    if (!previewDiv) return;
-    
-    var columns = layout.split(',').map(function(col) { 
-        return parseInt(col); 
-    });
-    
-    var html = '<div class="preview-container">';
-    html += '    <div class="preview-row">';
-    
-    columns.forEach(function(col) {
-        var width = (col / 12 * 100) + '%';
-        html += '<div class="preview-col" style="width: ' + width + '">';
-        html += '    <div class="preview-col-inner">' + col + '</div>';
-        html += '</div>';
-    });
-    
-    html += '    </div>';
-    html += '</div>';
-    
-    previewDiv.innerHTML = html;
-}

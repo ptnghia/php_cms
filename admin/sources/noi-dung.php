@@ -78,7 +78,7 @@ function luudulieu($id_module){
                     $data['id_loai']    =   $id_loai;
                     $data['hinh_anh']   =   $hinh_anh;
                     $data['ten']            =   $d->clear(addslashes($_POST['ten'][$key]));
-                    $data['noi_dung']       =   $d->clear(addslashes($_POST['noi_dung'][$key]));
+                    $data['noi_dung']       =   $d->clear($_POST['noi_dung'][$key]);
                     $data['link']           =   $d->clear(addslashes($_POST['link'][$key]));
                     $data['video']          =   addslashes($_POST['video']);
                     $data['ma_video']       =   addslashes($_POST['ma_video']);
@@ -115,7 +115,7 @@ function luudulieu($id_module){
                     $data['id_loai']    =   $id_loai;
                     $data['hinh_anh']   =   $hinh_anh;
                     $data['ten']        =   $d->clear(addslashes($_POST['ten'][$key]));
-                    $data['noi_dung']   =   $d->clear(addslashes($_POST['noi_dung'][$key]));
+                    $data['noi_dung']   =   $d->clear($_POST['noi_dung'][$key]);
                     $data['link']       =   $d->clear(addslashes($_POST['link'][$key]));
                     $data['video']          =   addslashes($_POST['video']);
                     $data['ma_video']   =   addslashes($_POST['ma_video']);

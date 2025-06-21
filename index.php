@@ -62,7 +62,7 @@ if (!file_exists('.htaccess')) {
     <?php include _source . "module/seo.php" ?>
     <?php include _source . "templates/css.php" ?>
     <?php if ($com != '') { ?>
-        <?= $row['seo_head'] ?>
+    <?= $row['seo_head'] ?>
     <?php } ?>
 </head>
 
@@ -76,7 +76,7 @@ if (!file_exists('.htaccess')) {
     <?php include _source . "module/hotrotructuyen.php" ?>
     <?php include 'sitemap/seo_footer.inc'; ?>
     <?php if ($com != '') { ?>
-        <?= $row['seo_body'] ?>
+    <?= $row['seo_body'] ?>
     <?php } ?>
 </body>
 

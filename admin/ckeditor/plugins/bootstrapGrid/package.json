@@ -1,0 +1,125 @@
+{
+  "name": "ckeditor-bootstrap-grid-plugin",
+  "version": "2.0.0",
+  "description": "Plugin CKEditor nâng cao cho việc tạo layout responsive Bootstrap Grid với đầy đủ tính năng",
+  "keywords": [
+    "ckeditor",
+    "plugin",
+    "bootstrap",
+    "grid",
+    "responsive",
+    "layout",
+    "vietnamese"
+  ],
+  "author": "Team Dev",
+  "license": "MIT",
+  "homepage": "https://github.com/your-repo/ckeditor-bootstrap-grid-plugin",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-repo/ckeditor-bootstrap-grid-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-repo/ckeditor-bootstrap-grid-plugin/issues"
+  },
+  "main": "plugin.js",
+  "files": [
+    "plugin.js",
+    "dialogs/",
+    "icons/",
+    "styles/",
+    "README.md"
+  ],
+  "engines": {
+    "ckeditor": ">=4.0.0"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "bootstrap": ">=4.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"No tests available yet\"",
+    "demo": "open demo.html"
+  },
+  "ckeditor": {
+    "pluginName": "bootstrapGrid",
+    "type": "dialog",
+    "category": "insert",
+    "requirements": [
+      "dialog"
+    ]
+  },
+  "features": [
+    "Responsive breakpoints (XS, SM, MD, LG, XL)",
+    "Template system với preset layouts",
+    "Offset columns support",
+    "Vertical và horizontal alignment",
+    "Custom gutters control",
+    "Real-time preview",
+    "Vietnamese localization",
+    "Bootstrap 4 & 5 compatibility",
+    "Clean HTML output",
+    "Advanced validation"
+  ],
+  "compatibility": {
+    "ckeditor": [
+      "4.x"
+    ],
+    "bootstrap": [
+      "4.x",
+      "5.x"
+    ],
+    "browsers": [
+      "Chrome >=60",
+      "Firefox >=55",
+      "Safari >=11",
+      "Edge >=79",
+      "IE >=11"
+    ]
+  },
+  "changelog": {
+    "2.0.0": [
+      "Full responsive breakpoint support",
+      "Template system implementation",
+      "Advanced alignment options",
+      "Offset support for all breakpoints",
+      "Improved UI/UX with 3-tab interface",
+      "Better code structure and namespace",
+      "Enhanced preview with breakpoint indicator",
+      "Added demo.html for testing",
+      "Comprehensive documentation"
+    ],
+    "1.0.0": [
+      "Basic grid layout functionality",
+      "MD breakpoint only",
+      "Simple preview",
+      "Manual layout input",
+      "Vietnamese interface"
+    ]
+  },
+  "installation": {
+    "steps": [
+      "1. Copy thư mục bootstrapGrid vào thư mục plugins của CKEditor",
+      "2. Thêm 'bootstrapGrid' vào config.extraPlugins",
+      "3. Thêm 'BootstrapGrid' vào toolbar config",
+      "4. Đảm bảo Bootstrap CSS được load trên trang",
+      "5. Test plugin bằng file demo.html"
+    ]
+  },
+  "configuration": {
+    "example": {
+      "extraPlugins": "bootstrapGrid",
+      "toolbar": [
+        {
+          "name": "insert",
+          "items": ["BootstrapGrid"]
+        }
+      ]
+    }
+  },
+  "support": {
+    "documentation": "README.md",
+    "demo": "demo.html",
+    "issues": "https://github.com/your-repo/ckeditor-bootstrap-grid-plugin/issues"
+  }
+}

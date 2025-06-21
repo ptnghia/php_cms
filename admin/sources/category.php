@@ -111,8 +111,8 @@ function luudulieu($id_module)
                     if ($banner != '') {
                         $data['banner']     =   $banner;
                     }
-                    $data['mo_ta']          =   addslashes($_POST['mo_ta'][$key]);
-                    $data['noi_dung']       =   addslashes($_POST['noi_dung'][$key]);
+                    $data['mo_ta']          =   $d->clear($_POST['mo_ta'][$key]);
+                    $data['noi_dung']       =   $d->clear($_POST['noi_dung'][$key]);
                     $data['so_thu_tu']      =   $so_thu_tu;
                     $data['hien_thi']       =   $hien_thi;
                     $data['nofollow']       =   isset($_POST['nofollow']) ? 1 : 0;
@@ -187,8 +187,8 @@ function luudulieu($id_module)
                     $data['id_loai']        =    $id_loai;
                     $data['hinh_anh']       =   $hinh_anh;
                     $data['banner']         =   $banner;
-                    $data['mo_ta']          =   addslashes($_POST['mo_ta'][$key]);
-                    $data['noi_dung']       =   addslashes($_POST['noi_dung'][$key]);
+                    $data['mo_ta']          =   $d->clear($_POST['mo_ta'][$key]);
+                    $data['noi_dung']       =   $d->clear($_POST['noi_dung'][$key]);
                     $data['so_thu_tu']      =   $so_thu_tu;
                     $data['hien_thi']       =   $hien_thi;
                     $data['nofollow']       =   isset($_POST['nofollow']) ? 1 : 0;

@@ -853,8 +853,8 @@ class func_index
     {
         $row = $this->simple_fetch("select text from #_text where id = $id ");
         $str = $row['text'];
-        $arr_txt = json_decode($str, true);
-        return $arr_txt['en'];
+        $arr_txt = json_decode(stripslashes($str), true);
+        return $arr_txt[$_SESSION['lang']]; // Sử dụng biến session để lấy ngôn ngữ hiện tại
     }
 
     function getReview($id_sp)

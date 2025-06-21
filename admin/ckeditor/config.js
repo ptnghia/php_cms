@@ -10,9 +10,9 @@ CKEDITOR.editorConfig = function( config ) {
 	//config.extraPlugins = 'codesnippet';
 	//config.extraPlugins = 'gallery';
 	//config.extraPlugins = 'powrmediagallery';
-	config.extraPlugins = 'youtube,blocktemplate,bootstrapGrid,bootstrap5components';
+	config.extraPlugins = 'youtube,blocktemplate,bootstrapGrid,bootstrap5components,bootstrapTable';
         config.contentsCss = [
-            '../templates/css/index.css',
+            '../templates/css/style.css',
             'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' // Add Bootstrap CSS
         ];
         config.font_names = 'Roboto/Roboto,Helvetica,Arial,sans-serif;'+
