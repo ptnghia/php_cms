@@ -23,6 +23,12 @@ function get_json($object, $key = '', $attributes = '')
             "name":"Tiếng việt",
             "image":"templates/images/icon_vn.webp",
             "price":"VND"
+        },
+        "1":{
+            "code":"en",
+            "name":"English",
+            "image":"templates/images/icon_en.webp",
+            "price":"USD"
         }
     }
 }';

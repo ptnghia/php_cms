@@ -132,17 +132,16 @@ RewriteRule .* - [R=429,L]
 </FilesMatch>
 
 # url đa ngôn ngữ
-
-# RewriteRule ^([a-z]+)/$ index.php?com=&lang=$1 [L]
-# RewriteRule ^([a-z]+)/([a-zA-Z0-9_-]+).html$	index.php?lang=$1&com=$2 [L]
-# RewriteRule ^([a-z]+)/([a-zA-Z0-9_-]+).html&page=([0-9]+)$ index.php?lang=$1&com=$2&page=$3 [L]
+RewriteRule ^([a-z]+)/$ index.php?com=&lang=$1 [L]
+RewriteRule ^([a-z]+)/([a-zA-Z0-9_-]+).html$	index.php?lang=$1&com=$2 [L]
+RewriteRule ^([a-z]+)/([a-zA-Z0-9_-]+).html&page=([0-9]+)$ index.php?lang=$1&com=$2&page=$3 [L]
 
 # url một ngôn ngữ
-RewriteRule ^([^/]*).html$	index.php?com=$1 [L]
-RewriteRule ^([a-zA-Z0-9_-]+).html&page=([0-9]+)$ index.php?com=$1&page=$2 [L]
+#RewriteRule ^([^/]*).html$	index.php?com=$1 [L]
+#RewriteRule ^([a-zA-Z0-9_-]+).html&page=([0-9]+)$ index.php?com=$1&page=$2 [L]
 
-RewriteRule ^([^/]*)/([^/]*).html$ index.php?alias=$1&com=$2 [L]
-RewriteRule ^([^/]*)/([^/]*).html(.*)$ index.php?alias=$1&com=$2&page=$3 [L]
+#RewriteRule ^([^/]*)/([^/]*).html$ index.php?alias=$1&com=$2 [L]
+#RewriteRule ^([^/]*)/([^/]*).html(.*)$ index.php?alias=$1&com=$2&page=$3 [L]
 
-RewriteRule ^([^/]*)/([^/]*)/([^/]*).html$ index.php?alias=$1&alias1=$2&com=$3 [L]
-RewriteRule ^([^/]*)/([^/]*)/([^/]*).html(.*)$ index.php?alias=$1&alias1=$2&com=$3&page=$4 [L]
+#RewriteRule ^([^/]*)/([^/]*)/([^/]*).html$ index.php?alias=$1&alias1=$2&com=$3 [L]
+#RewriteRule ^([^/]*)/([^/]*)/([^/]*).html(.*)$ index.php?alias=$1&alias1=$2&com=$3&page=$4 [L]

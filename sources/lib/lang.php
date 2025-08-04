@@ -1,14 +1,22 @@
 <?php
-$languages = get_json('lang');
+$lang = get_json('lang');
+$languages = array();
+foreach ($lang as $key => $value) {
+    $languages[$key] = $value['code'];
+}
+
 if (count($languages) > 1) {
+    
     if ($_REQUEST['lang'] && in_array($_REQUEST['lang'], $languages)) {
         $_SESSION['lang'] = $_REQUEST['lang'];
     } else {
         if (!isset($_SESSION['lang']) || !in_array($_SESSION['lang'], $languages)) {
             $_SESSION['lang'] = $languages[0];
             header("Location:" . URLPATH . $_SESSION['lang'] . '/');
+            exit();
         } else {
             header("Location:" . URLPATH . $_SESSION['lang'] . '/');
+            exit();
         }
     }
     $lang = $_SESSION['lang'];
