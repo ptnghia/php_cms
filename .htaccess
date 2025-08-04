@@ -98,7 +98,7 @@ php_flag display_errors Off
 php_flag log_errors On
 
 ## Bảo vệ chống Brute Force Attack
-RewriteCond %{REQUEST_URI} ^/(wp-login.php|administrator|admin) [NC]
+RewriteCond %{REQUEST_URI} ^/(wp-login.php|administrator) [NC]
 RewriteCond %{HTTP:Authorization} ^$
 RewriteRule .* - [R=429,L]
 

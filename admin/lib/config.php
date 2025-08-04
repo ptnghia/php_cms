@@ -5,7 +5,7 @@ $refix      = $config['database']['refix'] = "db_";
 $host       = $config['database']['servername'] = 'localhost';
 $username   = $config['database']['username'] = 'root';
 $password   = $config['database']['password'] = 'eox_NUMEZB9g';
-$database   = $config['database']['database'] = 'lt_014';
+$database   = $config['database']['database'] = 'lt_016';
 
 try {
     $conn = new PDO("mysql:host=$host;dbname=$database;charset=utf8", $username, $password);
@@ -14,5 +14,5 @@ try {
     die("MariaDB connection failed: " . $e->getMessage());
 }
 
-define("URLPATH", "https://" . $_SERVER["SERVER_NAME"] . "/014-dichthuatbienxanh/");
-define("urladmin", "https://" . $_SERVER["SERVER_NAME"] . "/014-dichthuatbienxanh/admin/");
+define("URLPATH", "https://" . $_SERVER["SERVER_NAME"] . "/016-songvugia/");
+define("urladmin", "https://" . $_SERVER["SERVER_NAME"] . "/016-songvugia/admin/");
