@@ -11,8 +11,12 @@ RewriteEngine On
 Options -Indexes
 
 ## Chặn truy cập vào các thư mục hệ thống
-RedirectMatch 403 /\..*
+# Cho phép .well-known, chặn các thư mục ẩn khác
+RedirectMatch 403 /(?!\.well-known)[\.].*
 RedirectMatch 403 /(vendor|storage|logs)/
+
+# Chặn tất cả đường dẫn bắt đầu bằng /wp
+RedirectMatch 403 ^/wp.*
 
 ## Chặn truy cập vào thư mục logs và các file trong đó
 RedirectMatch 403 ^/log(/.*)?$
